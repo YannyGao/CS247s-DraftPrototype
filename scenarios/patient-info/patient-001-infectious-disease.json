@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0",
+  "data_classification": "SYNTHETIC_TEST_DATA_NOT_FOR_CLINICAL_USE",
+  "scenario_id": "ED-ID-001",
+  "scenario_title": "Suspected septic arthritis with bloodstream infection",
+  "current_state": {
+    "care_setting": "Emergency Department",
+    "facility": "Fictional University Hospital",
+    "location": "ED Bay 18",
+    "arrival_time_local": "2026-10-23T14:12:00-07:00",
+    "scenario_clock_local": "2026-10-23T18:05:00-07:00",
+    "disposition": "Admission requested; inpatient bed pending",
+    "isolation_status": "Standard precautions",
+    "code_status": "Full code"
+  },
+  "patient": {
+    "legal_name": "Morgan Testpatient",
+    "preferred_name": "Morgan",
+    "pronouns": "they/them",
+    "date_of_birth": "1983-04-17",
+    "age_years": 43,
+    "sex_assigned_at_birth": "Female",
+    "medical_record_number": "SYN-MRN-100001",
+    "encounter_number": "SYN-ENC-26010231",
+    "hospital_account_number": "SYN-HAR-90010001",
+    "visit_type": "Emergency",
+    "language": "English",
+    "weight_kg": 72.4,
+    "height_cm": 168,
+    "allergies": [
+      {
+        "substance": "Trimethoprim-sulfamethoxazole",
+        "reaction": "Diffuse pruritic rash",
+        "severity": "Moderate",
+        "verification_status": "Patient reported"
+      }
+    ]
+  },
+  "requesting_team": {
+    "service": "Emergency Medicine",
+    "requesting_clinician": "Dr. Elena Park (synthetic)",
+    "role": "Emergency medicine resident",
+    "best_informed_contact": "Dr. Elena Park (synthetic)",
+    "callback_number": "555-010-1180",
+    "supervising_clinician": "Dr. Samuel Ortiz (synthetic)",
+    "coverage_note": "Requesting resident remains in the ED until 23:00 local time. Call the ED attending after that time."
+  },
+  "consult_request": {
+    "requested_specialty": "Infectious Diseases",
+    "request_type": "New urgent inpatient consultation",
+    "requested_response_window_minutes": 60,
+    "urgency": "Urgent but currently hemodynamically stable",
+    "decision_needed": "Recommend empiric antimicrobial coverage and diagnostic next steps for suspected native-knee septic arthritis with preliminary gram-positive cocci in blood cultures.",
+    "reason_now": "The patient has a purulent knee aspirate, rising inflammatory markers, and a preliminary positive blood culture. Orthopedics is planning operative washout tonight.",
+    "specific_questions": [
+      "Is the current empiric regimen appropriate before organism identification and susceptibilities return?",
+      "Which operative specimens and additional cultures should be obtained?",
+      "What findings would change the anticipated antimicrobial duration?"
+    ],
+    "consultant_action_requested": [
+      "Review current microbiology and antimicrobial selection",
+      "Provide preoperative diagnostic recommendations",
+      "Evaluate the patient after admission"
+    ],
+    "accept_or_redirect_context": "Orthopedics has accepted the patient for source control but requests Infectious Diseases management of suspected bacteremia and antimicrobial planning."
+  },
+  "chief_complaint": "Fever and rapidly worsening left knee pain",
+  "symptoms": [
+    {
+      "symptom": "Left knee pain",
+      "onset": "3 days before arrival",
+      "severity": "9/10 with movement, 6/10 at rest",
+      "details": "Rapidly progressive swelling; unable to bear weight since this morning"
+    },
+    {
+      "symptom": "Fever and chills",
+      "onset": "Approximately 24 hours before arrival",
+      "details": "Maximum home temperature reported as 39.1 C"
+    },
+    {
+      "symptom": "Nausea",
+      "onset": "Day of arrival",
+      "details": "No vomiting or diarrhea"
+    }
+  ],
+  "pertinent_negatives": [
+    "No recent surgery or prosthetic joint",
+    "No known injection drug use",
+    "No recent international travel",
+    "No cough, dysuria, or focal skin abscess",
+    "No known immunosuppressive medication"
+  ],
+  "relevant_history": {
+    "conditions": [
+      "Type 2 diabetes mellitus; most recent documented A1c 8.4%",
+      "Hypertension",
+      "Remote left-knee meniscal repair in 2012; no implanted hardware"
+    ],
+    "home_medications": [
+      "Metformin extended release 1000 mg by mouth twice daily",
+      "Empagliflozin 10 mg by mouth daily",
+      "Lisinopril 20 mg by mouth daily"
+    ],
+    "recent_exposures": [
+      "Small abrasion over left shin after gardening 8 days ago",
+      "No recent antibiotics",
+      "No known sick contacts"
+    ]
+  },
+  "triage_vitals": {
+    "time_local": "2026-10-23T14:18:00-07:00",
+    "temperature_c": 38.9,
+    "heart_rate_bpm": 118,
+    "blood_pressure_mm_hg": "108/66",
+    "respiratory_rate_per_min": 22,
+    "oxygen_saturation_percent_room_air": 98,
+    "pain_score_0_to_10": 9
+  },
+  "most_recent_vitals": {
+    "time_local": "2026-10-23T17:45:00-07:00",
+    "temperature_c": 38.1,
+    "heart_rate_bpm": 102,
+    "blood_pressure_mm_hg": "116/70",
+    "respiratory_rate_per_min": 18,
+    "oxygen_saturation_percent_room_air": 98,
+    "pain_score_0_to_10": 6
+  },
+  "physical_exam": {
+    "general": "Alert, uncomfortable, answers questions appropriately",
+    "cardiopulmonary": "Tachycardic, regular rhythm; lungs clear; no respiratory distress",
+    "left_knee": "Large effusion, warmth, diffuse tenderness, and severe pain with passive range of motion; no draining wound",
+    "skin": "Healing 1.5 cm superficial abrasion on left anterior shin without fluctuance",
+    "neurologic": "Sensation and distal motor function intact in the left foot"
+  },
+  "test_results": {
+    "complete_blood_count": {
+      "collected_time_local": "2026-10-23T14:42:00-07:00",
+      "white_blood_cells_k_per_uL": 17.8,
+      "neutrophils_percent": 89,
+      "hemoglobin_g_per_dL": 12.1,
+      "platelets_k_per_uL": 286
+    },
+    "chemistry": {
+      "collected_time_local": "2026-10-23T14:42:00-07:00",
+      "sodium_mmol_per_L": 132,
+      "potassium_mmol_per_L": 4.2,
+      "bicarbonate_mmol_per_L": 20,
+      "blood_urea_nitrogen_mg_per_dL": 24,
+      "creatinine_mg_per_dL": 1.28,
+      "baseline_creatinine_mg_per_dL": 0.82,
+      "glucose_mg_per_dL": 246
+    },
+    "inflammatory_markers": {
+      "c_reactive_protein_mg_per_L": 214,
+      "erythrocyte_sedimentation_rate_mm_per_hr": 76
+    },
+    "lactate": {
+      "initial_mmol_per_L": 2.6,
+      "repeat_after_fluids_mmol_per_L": 1.7
+    },
+    "synovial_fluid": {
+      "aspiration_time_local": "2026-10-23T16:08:00-07:00",
+      "appearance": "Cloudy yellow",
+      "nucleated_cells_per_uL": 82400,
+      "neutrophils_percent": 94,
+      "crystals": "None seen",
+      "gram_stain": "Many polymorphonuclear cells; gram-positive cocci in clusters reported",
+      "culture": "Pending"
+    },
+    "microbiology": {
+      "blood_culture_sets_collected": 2,
+      "collection_time_local": "2026-10-23T14:50:00-07:00",
+      "preliminary_result": "One of four bottles flagged positive with gram-positive cocci in clusters at 17:38",
+      "rapid_identification": "Pending",
+      "susceptibilities": "Pending"
+    },
+    "imaging": {
+      "left_knee_xray": "Large joint effusion; no acute fracture; no radiopaque foreign body",
+      "chest_xray": "No focal airspace opacity"
+    }
+  },
+  "ed_treatment_and_actions": [
+    {
+      "time_local": "2026-10-23T15:02:00-07:00",
+      "action": "Lactated Ringer's 1500 mL intravenous bolus"
+    },
+    {
+      "time_local": "2026-10-23T16:20:00-07:00",
+      "action": "Vancomycin 1750 mg intravenous loading dose started after cultures"
+    },
+    {
+      "time_local": "2026-10-23T16:28:00-07:00",
+      "action": "Ceftriaxone 2 g intravenous dose administered"
+    },
+    {
+      "time_local": "2026-10-23T16:40:00-07:00",
+      "action": "Orthopedic Surgery evaluated patient and tentatively scheduled operative washout for 21:00"
+    },
+    {
+      "time_local": "2026-10-23T17:10:00-07:00",
+      "action": "Patient made NPO; repeat renal function ordered"
+    }
+  ],
+  "pending_information": [
+    {
+      "item": "Synovial fluid culture and susceptibilities",
+      "expected": "Preliminary update in 12-24 hours",
+      "owner": "Microbiology laboratory"
+    },
+    {
+      "item": "Blood-culture rapid organism identification",
+      "expected": "Expected tonight",
+      "owner": "Microbiology laboratory"
+    },
+    {
+      "item": "Operative findings and tissue cultures",
+      "expected": "After planned washout",
+      "owner": "Orthopedic Surgery"
+    },
+    {
+      "item": "Repeat creatinine",
+      "expected": "20:00 local time",
+      "owner": "Admitting medicine team"
+    }
+  ],
+  "ownership_and_next_steps": {
+    "current_owner": "Emergency Medicine until inpatient handoff",
+    "admitting_service": "Hospital Medicine",
+    "procedural_service": "Orthopedic Surgery",
+    "next_action": "Infectious Diseases review of empiric therapy and operative specimen plan",
+    "escalation_trigger": "Notify ED attending immediately for systolic blood pressure below 90 mm Hg, lactate increase, altered mental status, or new oxygen requirement"
+  },
+  "facilitator_only": {
+    "intended_workflow_challenges": [
+      "Urgent consultation with a focused question and reliable callback",
+      "Several teams share responsibility but have different next actions",
+      "Important microbiology and operative evidence is still pending",
+      "The consultant must preserve a provisional plan rather than mark the case complete"
+    ],
+    "high_signal_facts": [
+      "Purulent inflammatory synovial fluid with gram-positive cocci",
+      "Preliminary blood culture with gram-positive cocci in clusters",
+      "Acute kidney injury may affect antimicrobial planning",
+      "Operative source control is planned"
+    ],
+    "intentional_uncertainties": [
+      "Organism identification and susceptibilities are not yet known",
+      "Final operative timing and findings are not yet known",
+      "Duration of therapy cannot yet be finalized"
+    ]
+  }
+}
+
