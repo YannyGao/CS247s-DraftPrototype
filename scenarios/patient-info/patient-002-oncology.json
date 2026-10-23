@@ -1,0 +1,293 @@
+{
+  "schema_version": "1.0",
+  "data_classification": "SYNTHETIC_TEST_DATA_NOT_FOR_CLINICAL_USE",
+  "scenario_id": "ED-ONC-002",
+  "scenario_title": "Severe hypercalcemia with suspected recurrent metastatic cancer",
+  "current_state": {
+    "care_setting": "Emergency Department",
+    "facility": "Fictional University Hospital",
+    "location": "ED Bay 7",
+    "arrival_time_local": "2026-10-23T11:36:00-07:00",
+    "scenario_clock_local": "2026-10-23T18:05:00-07:00",
+    "disposition": "Admission to Hospital Medicine requested; monitored bed pending",
+    "isolation_status": "Standard precautions",
+    "code_status": "Full code; goals-of-care discussion not yet completed"
+  },
+  "patient": {
+    "legal_name": "Daniel Example",
+    "preferred_name": "Dan",
+    "pronouns": "he/him",
+    "date_of_birth": "1968-09-02",
+    "age_years": 58,
+    "sex_assigned_at_birth": "Male",
+    "medical_record_number": "SYN-MRN-100002",
+    "encounter_number": "SYN-ENC-26010232",
+    "hospital_account_number": "SYN-HAR-90010002",
+    "visit_type": "Emergency",
+    "language": "English",
+    "weight_kg": 81.6,
+    "height_cm": 178,
+    "allergies": [
+      {
+        "substance": "No known drug allergies",
+        "reaction": null,
+        "severity": null,
+        "verification_status": "Confirmed with patient and spouse"
+      }
+    ]
+  },
+  "requesting_team": {
+    "service": "Emergency Medicine",
+    "requesting_clinician": "Dr. Priya Nair (synthetic)",
+    "role": "Emergency medicine attending",
+    "best_informed_contact": "Dr. Priya Nair (synthetic)",
+    "callback_number": "555-010-0707",
+    "additional_context_contact": "Jamie Example, spouse (synthetic), reachable through the bedside phone only",
+    "coverage_note": "ED attending remains responsible until inpatient handoff. Prior oncology records are being requested from a fictional outside institution."
+  },
+  "consult_request": {
+    "requested_specialty": "Medical Oncology",
+    "request_type": "New urgent inpatient consultation",
+    "requested_response_window_minutes": 120,
+    "urgency": "Urgent; severe symptomatic hypercalcemia is being treated",
+    "decision_needed": "Advise the immediate malignancy workup and inpatient oncology plan for suspected recurrent metastatic lung adenocarcinoma with severe hypercalcemia and new lytic bone lesions.",
+    "reason_now": "The patient has confusion, corrected calcium of 14.8 mg/dL, acute kidney injury, and CT findings concerning for metastatic recurrence after a three-year lapse in oncology follow-up.",
+    "specific_questions": [
+      "Which biopsy target and staging studies should be prioritized during this admission?",
+      "Should additional tumor-directed treatment be considered before tissue confirmation?",
+      "What oncology information is needed before discussing prognosis and treatment options with the patient and family?"
+    ],
+    "consultant_action_requested": [
+      "Review prior cancer history and current imaging",
+      "Recommend tissue diagnosis and staging sequence",
+      "Evaluate the patient after initial calcium stabilization"
+    ],
+    "accept_or_redirect_context": "The patient is being admitted for medical stabilization. The ED is not asking Oncology to manage the acute hypercalcemia alone; it needs ownership of the malignancy-specific diagnostic plan."
+  },
+  "chief_complaint": "Progressive weakness, confusion, constipation, and right hip pain",
+  "symptoms": [
+    {
+      "symptom": "Generalized weakness and fatigue",
+      "onset": "Approximately 3 weeks before arrival",
+      "severity": "Now requires assistance to stand",
+      "details": "Previously independent in activities of daily living"
+    },
+    {
+      "symptom": "Intermittent confusion",
+      "onset": "4 days before arrival",
+      "details": "Spouse reports slowed responses and two episodes of disorientation to date"
+    },
+    {
+      "symptom": "Constipation",
+      "onset": "6 days before arrival",
+      "details": "No bowel movement despite over-the-counter polyethylene glycol"
+    },
+    {
+      "symptom": "Right hip and lower-back pain",
+      "onset": "Approximately 1 month before arrival",
+      "severity": "7/10 with walking",
+      "details": "No fall; pain is worse at night"
+    },
+    {
+      "symptom": "Unintentional weight loss",
+      "onset": "Over 2 months",
+      "details": "Approximately 8.2 kg by patient and spouse report"
+    }
+  ],
+  "pertinent_negatives": [
+    "No fever or chills",
+    "No new focal weakness or sensory loss",
+    "No bowel or bladder incontinence",
+    "No saddle anesthesia",
+    "No hemoptysis",
+    "No recent calcium supplement use"
+  ],
+  "relevant_history": {
+    "conditions": [
+      "Stage IIB right upper-lobe lung adenocarcinoma diagnosed in 2021",
+      "Right upper lobectomy followed by adjuvant platinum-based chemotherapy completed in 2022",
+      "Last oncology follow-up approximately 3 years ago",
+      "Chronic obstructive pulmonary disease",
+      "Former tobacco use; 32 pack-years, stopped in 2021"
+    ],
+    "known_prior_cancer_data": {
+      "original_pathology": "Adenocarcinoma; detailed molecular report not available in current chart",
+      "last_known_surveillance_scan": "Reported as without recurrence in 2023; outside images unavailable",
+      "prior_radiation": "None reported",
+      "current_anticancer_therapy": "None"
+    },
+    "home_medications": [
+      "Tiotropium inhaler 2 puffs daily",
+      "Albuterol inhaler 2 puffs every 4 hours as needed",
+      "Acetaminophen 650 mg by mouth as needed for pain",
+      "Polyethylene glycol 17 g by mouth daily as needed"
+    ]
+  },
+  "triage_vitals": {
+    "time_local": "2026-10-23T11:44:00-07:00",
+    "temperature_c": 36.8,
+    "heart_rate_bpm": 104,
+    "blood_pressure_mm_hg": "146/84",
+    "respiratory_rate_per_min": 20,
+    "oxygen_saturation_percent_room_air": 95,
+    "pain_score_0_to_10": 7
+  },
+  "most_recent_vitals": {
+    "time_local": "2026-10-23T17:40:00-07:00",
+    "temperature_c": 36.7,
+    "heart_rate_bpm": 92,
+    "blood_pressure_mm_hg": "138/80",
+    "respiratory_rate_per_min": 18,
+    "oxygen_saturation_percent_room_air": 95,
+    "pain_score_0_to_10": 4
+  },
+  "physical_exam": {
+    "general": "Tired appearing; dry mucous membranes; no acute respiratory distress",
+    "mental_status": "Awake; oriented to person and place but states the date is three days earlier; follows two-step commands",
+    "cardiopulmonary": "Mild tachycardia with regular rhythm; decreased breath sounds at right apex consistent with prior surgery",
+    "abdomen": "Soft, mildly distended, no focal tenderness",
+    "musculoskeletal": "Tender over right posterior pelvis; pain with right hip loading; no obvious deformity",
+    "neurologic": "Strength 5/5 in all extremities; sensation intact; no clonus; gait not tested because of pain"
+  },
+  "test_results": {
+    "complete_blood_count": {
+      "collected_time_local": "2026-10-23T12:08:00-07:00",
+      "white_blood_cells_k_per_uL": 11.2,
+      "hemoglobin_g_per_dL": 10.4,
+      "mean_corpuscular_volume_fL": 88,
+      "platelets_k_per_uL": 331
+    },
+    "chemistry": {
+      "collected_time_local": "2026-10-23T12:08:00-07:00",
+      "sodium_mmol_per_L": 134,
+      "potassium_mmol_per_L": 3.5,
+      "chloride_mmol_per_L": 97,
+      "bicarbonate_mmol_per_L": 29,
+      "blood_urea_nitrogen_mg_per_dL": 38,
+      "creatinine_mg_per_dL": 1.86,
+      "baseline_creatinine_mg_per_dL": 0.96,
+      "measured_calcium_mg_per_dL": 14.2,
+      "albumin_g_per_dL": 3.2,
+      "corrected_calcium_mg_per_dL": 14.8,
+      "phosphorus_mg_per_dL": 2.1,
+      "magnesium_mg_per_dL": 1.6
+    },
+    "hypercalcemia_evaluation": {
+      "intact_parathyroid_hormone_pg_per_mL": 7,
+      "parathyroid_hormone_related_peptide": "Pending",
+      "25_hydroxy_vitamin_d_ng_per_mL": 24,
+      "ionized_calcium_mmol_per_L": 1.82
+    },
+    "other_laboratory_results": {
+      "alkaline_phosphatase_U_per_L": 286,
+      "ast_U_per_L": 42,
+      "alt_U_per_L": 31,
+      "total_bilirubin_mg_per_dL": 0.6,
+      "uric_acid_mg_per_dL": 8.1,
+      "ldh_U_per_L": 412
+    },
+    "electrocardiogram": {
+      "time_local": "2026-10-23T12:20:00-07:00",
+      "rhythm": "Sinus tachycardia",
+      "rate_bpm": 101,
+      "qtc_ms": 408,
+      "interpretation": "Shortened QT interval; no acute ischemic changes"
+    },
+    "imaging": {
+      "ct_chest_abdomen_pelvis_with_contrast": {
+        "time_local": "2026-10-23T15:26:00-07:00",
+        "findings": [
+          "Postsurgical changes from right upper lobectomy",
+          "New 3.6 cm right hilar soft-tissue mass with narrowing of the right mainstem bronchus",
+          "Multiple new bilateral pulmonary nodules up to 1.1 cm",
+          "New 2.4 cm right adrenal nodule",
+          "Multiple lytic lesions involving T11, L3, and the right iliac wing",
+          "No pathologic fracture identified on this study"
+        ],
+        "impression": "Findings are highly concerning for recurrent metastatic malignancy."
+      },
+      "ct_head_without_contrast": {
+        "time_local": "2026-10-23T13:05:00-07:00",
+        "findings": "No acute hemorrhage, hydrocephalus, or large territorial infarct. Noncontrast CT does not exclude small metastases."
+      }
+    }
+  },
+  "ed_treatment_and_actions": [
+    {
+      "time_local": "2026-10-23T12:28:00-07:00",
+      "action": "Normal saline intravenous infusion started after 1000 mL bolus"
+    },
+    {
+      "time_local": "2026-10-23T13:12:00-07:00",
+      "action": "Calcitonin 4 units/kg subcutaneous dose administered"
+    },
+    {
+      "time_local": "2026-10-23T14:05:00-07:00",
+      "action": "Zoledronic acid deferred pending repeat renal assessment and admitting-team decision"
+    },
+    {
+      "time_local": "2026-10-23T16:12:00-07:00",
+      "action": "Hospital Medicine accepted admission"
+    },
+    {
+      "time_local": "2026-10-23T17:22:00-07:00",
+      "action": "Repeat calcium and metabolic panel ordered for 20:00"
+    }
+  ],
+  "pending_information": [
+    {
+      "item": "Repeat calcium, creatinine, magnesium, and phosphorus",
+      "expected": "20:00 local time",
+      "owner": "Admitting medicine team"
+    },
+    {
+      "item": "Parathyroid hormone-related peptide",
+      "expected": "2-4 days",
+      "owner": "Reference laboratory"
+    },
+    {
+      "item": "Outside pathology, molecular testing, treatment summary, and surveillance imaging",
+      "expected": "Records request submitted; arrival unknown",
+      "owner": "Health information management"
+    },
+    {
+      "item": "MRI brain with and without contrast",
+      "expected": "Not yet ordered; decision requested from Oncology",
+      "owner": "Unassigned"
+    },
+    {
+      "item": "Tissue biopsy plan",
+      "expected": "Not yet determined",
+      "owner": "Oncology after review"
+    }
+  ],
+  "ownership_and_next_steps": {
+    "current_owner": "Emergency Medicine until inpatient handoff",
+    "admitting_service": "Hospital Medicine",
+    "consulting_service_requested": "Medical Oncology",
+    "next_action": "Oncology review of imaging and recommendation for biopsy target and staging sequence",
+    "escalation_trigger": "Notify ED attending immediately for worsening mental status, new focal neurologic deficit, arrhythmia, hemodynamic instability, or inability to maintain hydration"
+  },
+  "facilitator_only": {
+    "intended_workflow_challenges": [
+      "The acute metabolic problem and the malignancy-specific question have different owners",
+      "Important outside cancer records are missing",
+      "The participant must distinguish suspected recurrence from confirmed pathology",
+      "The note and board should preserve the biopsy, staging, and follow-up plan"
+    ],
+    "high_signal_facts": [
+      "Symptomatic severe hypercalcemia with suppressed parathyroid hormone",
+      "Prior lung adenocarcinoma and a long gap in oncology follow-up",
+      "New hilar mass, pulmonary nodules, adrenal nodule, and lytic bone lesions",
+      "Acute kidney injury affects immediate treatment choices",
+      "No focal neurologic deficits or pathologic fracture identified"
+    ],
+    "intentional_uncertainties": [
+      "Recurrence is strongly suspected but not tissue-confirmed",
+      "Prior molecular testing is unavailable",
+      "The safest and highest-yield biopsy target has not been selected",
+      "Brain staging has not been completed"
+    ]
+  }
+}
+
