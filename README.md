@@ -8,20 +8,6 @@ This repository is the home base for three research prototypes exploring how dig
 
 The goal is not to build a production clinical system. We are creating focused prototypes that let us observe behavior, compare interaction approaches, and learn where a tool helps or adds burden. Each prototype should remain small enough to test one primary question well.
 
-## Project ground rules
-
-These rules apply across all three prototypes and to any Codex work performed in this repository:
-
-- **Target Windows.** Product behavior, setup instructions, testing, shortcuts, and implementation decisions should assume a Windows operating system.
-- **Use Epic as the clinical design baseline.** The prototypes should feel understandable to clinicians who work in Epic and should draw from familiar EHR patterns for patient context, worklists, information density, navigation, status, and documentation. They must not imply an official Epic integration or copy proprietary assets without permission.
-- **Use synthetic data only.** No real patient information or protected health information may appear in the prototypes, repository, prompts, recordings, or external services.
-- **Preview locally after every build.** Every functional build or material interface change must be run and checked locally. The team should receive a working localhost URL before the work is presented as ready for review.
-- **Preview before pushing.** The current version must be available on localhost for review before any remote push.
-- **Never push without explicit approval.** Editing, building, previewing, committing, or configuring a remote does not authorize a push. Codex must receive an explicit instruction to push in the current conversation.
-- **Do not publish externally without approval.** Creating a pull request or deployment also requires a specific user instruction.
-
-Repository-level instructions for Codex are recorded in `AGENTS.md`.
-
 ## Project background
 
 Interviews with hospitalists, consultants, and clinical workflow experts describe consultation as a parallel, interruption-heavy process. A consultant may receive a page while managing active patients, reconstruct the clinical context from several sources, clarify the question by phone, see the patient, discuss the case with a supervisor, communicate an interim plan, write a note, and continue following pending results.
