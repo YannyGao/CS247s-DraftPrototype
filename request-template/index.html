@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Structured Consultation Request</title>
+  <link rel="stylesheet" href="/shared/styles.css">
+  <link rel="stylesheet" href="/request-template/request-template.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><strong>Stanford Health Care</strong><span>Consult Order</span></div>
+      <nav class="topbar-nav" aria-label="Clinical workspace"><span>Chart Review</span><span>Orders</span><span class="active">Consult Request</span></nav>
+      <span class="synthetic-banner">Synthetic test data</span>
+    </header>
+
+    <section class="patient-strip">
+      <div><strong>Morgan Testpatient</strong><small>43 years · they/them · SYN-MRN-100001</small></div>
+      <div><small>Location</small><b>ED Bay 18</b></div>
+      <div><small>Encounter</small><b>SYN-ENC-26010231</b></div>
+      <div><small>Account</small><b>SYN-HAR-90010001</b></div>
+      <div><small>Current owner</small><b>Emergency Medicine</b></div>
+    </section>
+
+    <main class="template-layout">
+      <aside class="chart-panel panel">
+        <div class="chart-toolbar"><div><h1>Patient information</h1><p>Select facts to include in the consult request.</p></div><span id="selected-evidence-count">0 selected</span></div>
+        <div class="chart-scroll" id="chart-evidence"></div>
+      </aside>
+
+      <section class="request-form panel">
+        <div class="form-title"><div><h1>New consultation request</h1><p>Required information is marked. Review the consultant-facing preview before sending.</p></div><span class="status new">Draft</span></div>
+        <form id="consult-form">
+          <section class="form-section">
+            <h2>Service and timing</h2>
+            <div class="form-grid three">
+              <div class="field"><label for="specialty">Consulting specialty *</label><select id="specialty" required><option value="infectious-diseases">Infectious Diseases</option><option value="oncology">Medical Oncology</option></select></div>
+              <div class="field"><label for="urgency">Urgency *</label><select id="urgency" required><option>Routine</option><option selected>Urgent</option><option>Emergent</option></select></div>
+              <div class="field"><label for="response-window">Requested response *</label><select id="response-window" required><option>Within 30 minutes</option><option selected>Within 60 minutes</option><option>Within 2 hours</option><option>Today</option></select></div>
+            </div>
+            <div class="field"><label for="urgency-reason">Why this timing matters *</label><input id="urgency-reason" type="text" required value="Orthopedic Surgery is planning operative washout tonight at 21:00."></div>
+          </section>
+
+          <section class="form-section">
+            <h2>Decision needed</h2>
+            <div class="field"><label for="consult-question">Focused consult question *</label><textarea id="consult-question" required>Recommend empiric antimicrobial coverage and diagnostic next steps for suspected native-knee septic arthritis with preliminary gram-positive cocci in blood cultures.</textarea><small>Ask for a decision or action rather than repeating the diagnosis.</small></div>
+            <div class="field"><label for="working-assessment">Primary team assessment *</label><textarea id="working-assessment" required>Concern for native left-knee septic arthritis with possible staphylococcal bacteremia. The patient is currently hemodynamically stable after fluids. Orthopedics plans source control tonight.</textarea></div>
+          </section>
+
+          <section class="form-section adaptive-section" id="adaptive-section">
+            <div class="section-heading"><div><h2>Infectious Diseases context</h2><p id="adaptive-description">Provide factors that affect diagnostic yield, organism risk, and empiric therapy.</p></div><span class="micro">Changes with specialty</span></div>
+            <div class="form-grid two" id="adaptive-fields">
+              <div class="field"><label for="suspected-source">Suspected source *</label><select id="suspected-source" required><option>Bone or joint infection</option><option>Bloodstream infection</option><option>Skin or soft tissue</option><option>Other / uncertain</option></select></div>
+              <div class="field"><label for="antibiotic-timing">Antibiotics relative to cultures *</label><select id="antibiotic-timing" required><option selected>Started after joint aspiration and blood cultures</option><option>Started before cultures</option><option>Not started</option><option>Timing unknown</option></select></div>
+              <div class="field"><label for="resistance-risk">Resistance or exposure risks</label><input id="resistance-risk" type="text" value="No known MRSA history, injection drug use, recent antibiotics, or implanted joint hardware."></div>
+              <div class="field"><label for="source-control">Source-control plan *</label><input id="source-control" type="text" required value="Orthopedic washout planned for 21:00; operative tissue cultures requested."></div>
+            </div>
+          </section>
+
+          <section class="form-section">
+            <div class="section-heading"><div><h2>Selected clinical evidence</h2><p>Only checked chart facts will be sent with the request.</p></div><button type="button" class="button quiet" id="clear-evidence">Clear</button></div>
+            <div class="selected-evidence" id="selected-evidence"><p class="empty-evidence">No chart evidence selected yet.</p></div>
+          </section>
+
+          <section class="form-section">
+            <h2>Coordination</h2>
+            <div class="form-grid two">
+              <div class="field"><label for="contact">Best-informed contact *</label><select id="contact" required><option selected>Dr. Elena Park · ED resident · 555-010-1180</option><option>Dr. Samuel Ortiz · ED attending</option><option>Orthopedic Surgery on-call resident</option></select></div>
+              <div class="field"><label for="availability">Contact availability</label><input id="availability" type="text" value="Dr. Park remains in the ED until 23:00."></div>
+              <div class="field full"><label for="pending-items">Pending information and owner</label><textarea id="pending-items">Blood-culture rapid identification: Microbiology, expected tonight. Synovial culture: preliminary result expected in 12–24 hours. Operative findings and tissue cultures: Orthopedic Surgery after washout.</textarea></div>
+            </div>
+          </section>
+
+          <div class="form-actions"><span id="validation-message" role="status"></span><button type="button" class="button" id="preview-button">Review request</button><button type="submit" class="button primary">Send consult</button></div>
+        </form>
+      </section>
+    </main>
+
+    <dialog id="preview-dialog" class="preview-dialog">
+      <div class="dialog-heading"><div><h2>Consultant-facing preview</h2><p>Review what the receiving service will see.</p></div><button class="button quiet" id="close-preview">Close</button></div>
+      <div id="preview-content" class="preview-content"></div>
+      <div class="dialog-actions"><button class="button" id="back-to-edit">Back to edit</button><button class="button primary" id="send-from-preview">Send consult</button></div>
+    </dialog>
+  </div>
+  <script type="module" src="/request-template/request-template.js"></script>
+</body>
+</html>
+

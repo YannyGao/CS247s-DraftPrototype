@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consult Note Entry</title>
+  <link rel="stylesheet" href="/shared/styles.css">
+  <link rel="stylesheet" href="/note-entry/note-entry.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="note-brand">Stanford Health Care</div>
+      <nav class="topbar-nav" aria-label="Clinical workspace"><span>Chart Review</span><span class="active">Consult Note</span><span>Orders</span></nav>
+      <span class="synthetic-banner">Synthetic test data</span>
+    </header>
+
+    <section class="patient-strip">
+      <div><strong>Daniel Example</strong><small>58 years · he/him · SYN-MRN-100002</small></div>
+      <div><small>Location</small><b>ED Bay 7</b></div>
+      <div><small>Consult service</small><b>Medical Oncology</b></div>
+      <div><small>Requesting team</small><b>Emergency Medicine</b></div>
+      <div><small>Status</small><b>Admission pending</b></div>
+    </section>
+
+    <main class="note-layout">
+      <aside class="case-reference panel">
+        <div class="panel-heading"><h2>Case reference</h2><span class="status urgent">Urgent</span></div>
+        <section class="case-section"><h3>Consult question</h3><p>Advise immediate malignancy workup and inpatient oncology plan for suspected recurrent metastatic lung adenocarcinoma with severe hypercalcemia.</p></section>
+        <section class="case-section"><h3>Current presentation</h3><ul><li>Weakness and fatigue for 3 weeks</li><li>Intermittent confusion for 4 days</li><li>Constipation for 6 days</li><li>Right hip and lower-back pain</li><li>8.2 kg unintentional weight loss</li></ul></section>
+        <section class="case-section"><h3>High-signal results</h3><dl><div><dt>Corrected calcium</dt><dd>14.8 mg/dL</dd></div><div><dt>Creatinine</dt><dd>1.86 from 0.96</dd></div><div><dt>PTH</dt><dd>7 pg/mL</dd></div><div><dt>CT</dt><dd>New hilar mass, nodules, adrenal and lytic lesions</dd></div></dl></section>
+        <section class="case-section"><h3>Immediate treatment</h3><p>IV normal saline and calcitonin given. Repeat metabolic panel due at 20:00.</p></section>
+        <section class="case-section"><h3>Known uncertainty</h3><p>Recurrence is suspected, not tissue-confirmed. Prior molecular testing and outside images are unavailable.</p></section>
+      </aside>
+
+      <section class="note-workspace panel">
+        <div class="mode-header">
+          <div>
+            <h1>Oncology consultation note</h1>
+            <p>Choose one entry method. Both use the same synthetic case.</p>
+          </div>
+          <button class="button" id="reset-note">Reset</button>
+        </div>
+
+        <div class="method-switch" role="tablist" aria-label="Note entry method">
+          <button class="method active" data-method="typed" role="tab" aria-selected="true"><b>Direct typing</b><span>Write and organize the note manually</span></button>
+          <button class="method" data-method="voice" role="tab" aria-selected="false"><b>Speech assisted</b><span>Speak, correct transcript, generate draft</span></button>
+        </div>
+
+        <div class="note-content" id="typed-view">
+          <div class="note-section-nav" aria-label="Note sections">
+            <button data-target="typed-question" class="active">Consult question</button>
+            <button data-target="typed-assessment">Assessment</button>
+            <button data-target="typed-recommendations">Recommendations</button>
+            <button data-target="typed-followup">Pending / follow-up</button>
+          </div>
+          <div class="typed-form">
+            <div class="field"><label for="typed-question">Consult question</label><textarea id="typed-question" placeholder="State the decision the requesting team needs..."></textarea></div>
+            <div class="field"><label for="typed-assessment">Assessment</label><textarea id="typed-assessment" placeholder="Summarize relevant history, findings, and your assessment..."></textarea></div>
+            <div class="field"><label for="typed-recommendations">Recommendations</label><textarea id="typed-recommendations" placeholder="Enter immediate actions, diagnostic plan, and recommendations..."></textarea></div>
+            <div class="field"><label for="typed-followup">Pending and follow-up</label><textarea id="typed-followup" placeholder="Document pending information, contingencies, ownership, and next review..."></textarea></div>
+          </div>
+        </div>
+
+        <div class="note-content hidden" id="voice-view">
+          <section class="voice-stage">
+            <div class="voice-controls">
+              <div class="record-state" id="record-state"><span class="record-dot"></span><div><strong>Microphone ready</strong><small>Audio is transcribed live and is not saved by this prototype.</small></div></div>
+              <button class="button primary" id="record-button">Start dictation</button>
+            </div>
+            <div class="support-warning hidden" id="speech-warning" role="alert">Live speech recognition is not available in this browser. Use current Microsoft Edge or Google Chrome, or type directly into the transcript.</div>
+            <div class="field transcript-field"><label for="transcript">Live transcript</label><textarea id="transcript" spellcheck="true" placeholder="Your live transcript will appear here. You can edit it before generating a draft."></textarea><div class="transcript-meta"><span id="word-count">0 words</span><span>Review numbers, medications, names, and negation before generating.</span></div></div>
+            <div class="generate-row"><button class="button primary" id="generate-summary" disabled>Generate structured draft</button><span class="micro" id="summary-status">Add at least 20 characters to the transcript.</span></div>
+          </section>
+
+          <section class="generated-draft hidden" id="generated-draft">
+            <div class="draft-heading"><div><h2>Generated draft</h2><p>Requires clinician review. Edit every section before approval.</p></div><span class="status" id="summary-source">Draft</span></div>
+            <div class="typed-form" id="generated-fields"></div>
+          </section>
+        </div>
+
+        <footer class="note-footer"><span id="save-state">Not saved</span><div><button class="button" id="save-draft">Save draft</button><button class="button primary" id="approve-note">Review complete</button></div></footer>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/note-entry/note-entry.js"></script>
+</body>
+</html>
+

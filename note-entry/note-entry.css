@@ -1,0 +1,64 @@
+.note-brand {
+  display: block;
+  flex: 0 0 210px;
+  width: 210px;
+  white-space: nowrap;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.note-layout { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 16px; height: calc(100dvh - 110px); padding: 16px; }
+.case-reference, .note-workspace { min-height: 0; overflow: hidden; }
+.case-reference { overflow-y: auto; }
+.case-section { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.case-section h3 { margin: 0 0 7px; font-size: 12px; color: #334252; }
+.case-section p, .case-section ul { margin: 0; line-height: 1.48; }
+.case-section ul { padding-left: 18px; }
+.case-section li + li { margin-top: 4px; }
+.case-section dl { margin: 0; }
+.case-section dl div { display: grid; grid-template-columns: 115px 1fr; gap: 8px; padding: 5px 0; border-bottom: 1px solid #e6eaed; }
+.case-section dt { color: var(--muted); }
+.case-section dd { margin: 0; font-weight: 600; }
+.note-workspace { display: grid; grid-template-rows: auto auto 1fr auto; }
+.mode-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+.mode-header h1 { margin: 0; font-size: 20px; }
+.mode-header p { margin: 3px 0 0; color: var(--muted); }
+.method-switch { display: grid; grid-template-columns: 1fr 1fr; background: #edf2f5; border-bottom: 1px solid var(--line); }
+.method { padding: 12px 16px; text-align: left; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--muted); }
+.method + .method { border-left: 1px solid var(--line); }
+.method:hover { background: #e5ebef; }
+.method.active { color: var(--ink); background: #fff; border-bottom-color: var(--blue); }
+.method b, .method span { display: block; }
+.method span { margin-top: 3px; font-size: 11px; }
+.note-content { min-height: 0; overflow-y: auto; }
+#typed-view { display: grid; grid-template-columns: 185px 1fr; }
+.note-section-nav { padding: 12px 8px; background: #f4f7f9; border-right: 1px solid var(--line); }
+.note-section-nav button { width: 100%; padding: 9px 10px; text-align: left; border: 0; border-radius: 3px; background: transparent; color: #465462; }
+.note-section-nav button:hover, .note-section-nav button.active { color: #133f5d; background: #e2eef5; }
+.typed-form { display: grid; gap: 16px; padding: 18px; }
+.typed-form textarea { min-height: 115px; }
+.voice-stage { padding: 18px; }
+.voice-controls { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 14px; border: 1px solid var(--line); background: #f7f9fa; border-radius: 5px; }
+.record-state { display: flex; align-items: center; gap: 11px; }
+.record-state strong, .record-state small { display: block; }
+.record-state small { margin-top: 2px; color: var(--muted); }
+.record-dot { width: 12px; height: 12px; border: 2px solid #84919c; border-radius: 50%; background: #fff; }
+.recording .record-dot { background: #b13a3a; border-color: #b13a3a; box-shadow: 0 0 0 5px rgba(177,58,58,.12); animation: pulse 1.4s ease-in-out infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 9px rgba(177,58,58,.06); } }
+.support-warning { margin-top: 12px; padding: 10px 12px; border: 1px solid #d4a0a0; background: var(--red-soft); color: #762f2f; border-radius: 4px; }
+.transcript-field { margin-top: 16px; }
+.transcript-field textarea { min-height: 220px; }
+.transcript-meta { display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 11px; }
+.generate-row { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.generated-draft { border-top: 1px solid var(--line-strong); background: #f8fafb; }
+.draft-heading { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px 0; }
+.draft-heading h2 { margin: 0; font-size: 16px; }
+.draft-heading p { margin: 3px 0 0; color: var(--muted); }
+.note-footer { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid var(--line); background: #f5f7f9; color: var(--muted); }
+.note-footer div { display: flex; gap: 8px; }
+
+@media (max-width: 1100px) {
+  .note-layout { grid-template-columns: 285px minmax(0, 1fr); }
+}
+

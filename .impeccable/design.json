@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T02:22:08Z",
+  "title": "Design System: Stanford Health Care Consultation Prototypes",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Clinical Ink", "canonical": "#18212b", "tonalRamp": ["#101820", "#18212b", "#303c48", "#566371", "#7b8794", "#aeb8c1", "#dce2e7", "#f4f7f9"] },
+      "muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#5c6876", "tonalRamp": ["#18212b", "#303b47", "#465361", "#5c6876", "#7b8794", "#aeb8c1", "#dce2e7", "#f4f7f9"] },
+      "faint": { "role": "neutral", "displayName": "Faint Slate", "canonical": "#7b8794", "tonalRamp": ["#1d2731", "#37434f", "#566371", "#7b8794", "#9da8b2", "#c1c9d0", "#e1e6ea", "#f7f9fa"] },
+      "line": { "role": "neutral", "displayName": "Structural Line", "canonical": "#cbd4dd", "tonalRamp": ["#222e39", "#465462", "#6b7885", "#909ca8", "#b1bcc6", "#cbd4dd", "#e2e8ed", "#f7f9fa"] },
+      "line-strong": { "role": "neutral", "displayName": "Strong Structural Line", "canonical": "#9eabb8", "tonalRamp": ["#1f2a34", "#3e4b57", "#60707d", "#81909d", "#9eabb8", "#c1c9d0", "#e0e5e9", "#f5f7f9"] },
+      "surface": { "role": "neutral", "displayName": "Paper Surface", "canonical": "#ffffff", "tonalRamp": ["#20262b", "#41484e", "#666d73", "#8e9499", "#b5babd", "#d7dadd", "#eef0f1", "#ffffff"] },
+      "surface-subtle": { "role": "neutral", "displayName": "Cool Work Surface", "canonical": "#f4f7f9", "tonalRamp": ["#1d252b", "#3c474f", "#626d75", "#89939a", "#b1b9bf", "#d2d8dc", "#e8ecef", "#f4f7f9"] },
+      "surface-blue": { "role": "neutral", "displayName": "Patient Context Warm Tint", "canonical": "#fbf7f5", "tonalRamp": ["#321010", "#5f0d0d", "#8c1515", "#a83a32", "#c66c60", "#ddaaa1", "#ead0cb", "#fbf7f5"] },
+      "navy": { "role": "primary", "displayName": "Stanford Cardinal Chrome", "canonical": "#8c1515", "tonalRamp": ["#321010", "#5f0d0d", "#6f0f0f", "#8c1515", "#a83a32", "#c66c60", "#ddaaa1", "#fbf7f5"] },
+      "blue": { "role": "primary", "displayName": "Stanford Cardinal Action", "canonical": "#8c1515", "tonalRamp": ["#321010", "#5f0d0d", "#6f0f0f", "#8c1515", "#a83a32", "#c66c60", "#ddaaa1", "#fbf7f5"] },
+      "blue-hover": { "role": "primary", "displayName": "Cardinal Action Hover", "canonical": "#6f0f0f", "tonalRamp": ["#270909", "#4d0b0b", "#5f0d0d", "#6f0f0f", "#8c1515", "#b44f45", "#d4958c", "#f8e9e6"] },
+      "teal": { "role": "secondary", "displayName": "Coordination Teal", "canonical": "#17766d", "tonalRamp": ["#082c29", "#0e4b45", "#17766d", "#3d9189", "#70afa9", "#a4cec9", "#d1e7e4", "#f0f8f7"] },
+      "amber": { "role": "tertiary", "displayName": "Urgency Amber", "canonical": "#9a6100", "tonalRamp": ["#352000", "#5e3a00", "#7c4d00", "#9a6100", "#bd8425", "#d8a955", "#edd09a", "#fff4d6"] },
+      "amber-soft": { "role": "tertiary", "displayName": "Urgency Amber Surface", "canonical": "#fff4d6", "tonalRamp": ["#3f2a00", "#6b4900", "#966c13", "#be943c", "#dab96d", "#edd59e", "#f8e8bf", "#fff4d6"] },
+      "red": { "role": "tertiary", "displayName": "Clinical Red", "canonical": "#a43737", "tonalRamp": ["#3b1111", "#672020", "#8b2929", "#a43737", "#c36767", "#d99a9a", "#edcaca", "#fff0f0"] },
+      "red-soft": { "role": "tertiary", "displayName": "Clinical Red Surface", "canonical": "#fff0f0", "tonalRamp": ["#421616", "#712828", "#9e4444", "#c36767", "#dc9999", "#edbebe", "#f7dada", "#fff0f0"] },
+      "green": { "role": "tertiary", "displayName": "Completion Green", "canonical": "#2f6f50", "tonalRamp": ["#10291c", "#1d4934", "#2f6f50", "#568d70", "#82ad94", "#b0cdbb", "#d5e5db", "#f0f7f2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Decision Display", "purpose": "Major decision-stage headings used once per workspace." },
+      "headline": { "displayName": "Workspace Headline", "purpose": "Panel and form workspace titles." },
+      "title": { "displayName": "Clinical Title", "purpose": "Panel headings, cards, and patient identity." },
+      "body": { "displayName": "Clinical Body", "purpose": "Narrative, evidence, form values, and instructions." },
+      "label": { "displayName": "Control Label", "purpose": "Fields, tabs, statuses, and compact section labels." }
+    },
+    "shadows": [
+      { "name": "floating-workspace", "value": "0 18px 42px rgba(25, 54, 78, 0.2), 0 3px 10px rgba(25, 54, 78, 0.12)", "purpose": "Resizable consult board and modal dialog only." },
+      { "name": "context-separation", "value": "0 2px 6px rgba(29, 51, 69, 0.08)", "purpose": "Separates patient context from scrolling work." },
+      { "name": "sticky-action-separation", "value": "0 -4px 12px rgba(25, 49, 68, 0.07)", "purpose": "Separates sticky bottom actions from form content." },
+      { "name": "list-card-lift", "value": "0 1px 2px rgba(25, 51, 70, 0.08)", "purpose": "Minimal lift for draggable consult cards." }
+    ],
+    "motion": [
+      { "name": "button-press", "value": "translateY(1px)", "purpose": "Brief physical confirmation on active buttons." },
+      { "name": "recording-pulse", "value": "pulse 1.4s ease-in-out infinite", "purpose": "Used only while the microphone is actively listening." },
+      { "name": "reduced-motion", "value": "0.01ms", "purpose": "Near-zero animation and transition duration under prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "shared-compact-desktop", "value": "1100px" },
+      { "name": "request-compact-desktop", "value": "1120px" },
+      { "name": "dashboard-compact-desktop", "value": "1180px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The forward action within a local clinical decision group.",
+      "html": "<button class=\"ds-button ds-button-primary\">Accept consult</button>",
+      "css": ".ds-button { min-height: 34px; padding: 7px 14px; border: 1px solid var(--blue); border-radius: 4px; font: 600 14px 'Segoe UI', Arial, sans-serif; cursor: pointer; } .ds-button-primary { color: #fff; background: var(--blue); } .ds-button-primary:hover { background: var(--blue-hover); } .ds-button:focus-visible { outline: 3px solid rgba(140,21,21,.32); outline-offset: 2px; } .ds-button:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A bordered action for reversible or lower-priority choices.",
+      "html": "<button class=\"ds-button-secondary\">Review request</button>",
+      "css": ".ds-button-secondary { min-height: 34px; padding: 7px 14px; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 4px; font: 600 14px 'Segoe UI', Arial, sans-serif; cursor: pointer; } .ds-button-secondary:hover { background: #f2f5f7; } .ds-button-secondary:focus-visible { outline: 3px solid rgba(140,21,21,.32); outline-offset: 2px; } .ds-button-secondary:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Clinical Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A labeled Windows-native text field with a strong structural outline.",
+      "html": "<label class=\"ds-field\"><span>Why this timing matters *</span><input type=\"text\" value=\"Operative washout is planned for 21:00.\"></label>",
+      "css": ".ds-field { display: grid; gap: 6px; color: #2f3a45; font: 700 12px/1.35 'Segoe UI', Arial, sans-serif; } .ds-field input { width: 100%; min-height: 36px; padding: 7px 9px; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 4px; font: 400 14px/1.5 'Segoe UI', Arial, sans-serif; } .ds-field input:hover { border-color: #7f91a1; } .ds-field input:focus-visible { outline: 3px solid rgba(22,104,154,.32); outline-offset: 2px; }"
+    },
+    {
+      "name": "Local Status Tabs",
+      "kind": "nav",
+      "description": "A compact count-bearing filter rail for work status.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Consult status\"><button class=\"ds-tab ds-tab-active\" aria-selected=\"true\">All <span>14</span></button><button class=\"ds-tab\" aria-selected=\"false\">New <span>5</span></button><button class=\"ds-tab\" aria-selected=\"false\">In Progress <span>4</span></button></nav>",
+      "css": ".ds-tabs { display: flex; align-items: end; gap: 2px; padding: 0 10px; background: #f3f6f8; border-bottom: 1px solid var(--line); } .ds-tab { min-height: 37px; padding: 8px 12px 7px; color: #4e5b68; background: transparent; border: 0; border-bottom: 3px solid transparent; font: 650 12px 'Segoe UI', Arial, sans-serif; cursor: pointer; } .ds-tab span { margin-left: 5px; color: var(--faint); font-variant-numeric: tabular-nums; } .ds-tab:hover { color: var(--ink); background: #e9eef2; } .ds-tab-active { color: #124c70; background: #fff; border-bottom-color: var(--blue); } .ds-tab:focus-visible { outline: 3px solid rgba(22,104,154,.32); outline-offset: 2px; }"
+    },
+    {
+      "name": "Status Label",
+      "kind": "chip",
+      "refersTo": "status-new",
+      "description": "A text-first semantic state marker with coordinated border, surface, and ink.",
+      "html": "<span class=\"ds-status ds-status-new\">New</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; min-height: 22px; padding: 2px 7px; border: 1px solid var(--line); border-radius: 3px; font: 700 11px 'Segoe UI', Arial, sans-serif; } .ds-status-new { color: #7c4d00; background: var(--amber-soft); border-color: #e3c676; } .ds-status-new:hover { border-color: #bd942e; } .ds-status:focus-visible { outline: 3px solid rgba(22,104,154,.32); outline-offset: 2px; }"
+    },
+    {
+      "name": "Clinical Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "The standard bordered work surface with a quiet sectional heading.",
+      "html": "<section class=\"ds-panel\"><header><h2>Case reference</h2><span class=\"ds-panel-status\">Urgent</span></header><div class=\"ds-panel-body\">Visible patient context and high-signal evidence.</div></section>",
+      "css": ".ds-panel { overflow: hidden; color: var(--ink); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 6px; font: 400 14px/1.5 'Segoe UI', Arial, sans-serif; } .ds-panel header { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 14px; background: #f8fafb; border-bottom: 1px solid var(--line); } .ds-panel h2 { margin: 0; font-size: 15px; } .ds-panel-body { padding: 16px; } .ds-panel-status { color: #8b2929; background: var(--red-soft); border: 1px solid #e0aaaa; border-radius: 3px; padding: 2px 7px; font-size: 11px; font-weight: 700; }"
+    },
+    {
+      "name": "Ranked Consult Card",
+      "kind": "custom",
+      "description": "A draggable, text-rich work item with rank, state, urgency, ownership, and a priority rail.",
+      "html": "<article class=\"ds-consult-card\" tabindex=\"0\"><span class=\"ds-priority\"></span><div><header><strong>1. Morgan Testpatient, 43</strong><span>New</span></header><small>Infectious Diseases · ED Bay 18 · Urgent</small><p>Recommend empiric antimicrobial coverage and diagnostic next steps.</p><footer>Unassigned · Received 18:05</footer></div></article>",
+      "css": ".ds-consult-card { display: grid; grid-template-columns: 6px 1fr; overflow: hidden; color: var(--ink); background: #fff; border: 1px solid #b9c5ce; border-radius: 5px; box-shadow: 0 1px 2px rgba(25,51,70,.08); font: 400 14px/1.35 'Segoe UI', Arial, sans-serif; cursor: grab; } .ds-priority { background: #b14a4a; } .ds-consult-card > div { padding: 10px 11px 9px; } .ds-consult-card header { display: flex; align-items: center; gap: 8px; } .ds-consult-card header span { margin-left: auto; padding: 2px 7px; color: #7c4d00; background: var(--amber-soft); border: 1px solid #e3c676; border-radius: 3px; font-size: 11px; font-weight: 700; } .ds-consult-card small { display: block; margin: 5px 0 6px; color: var(--muted); } .ds-consult-card p { margin: 0; } .ds-consult-card footer { margin-top: 7px; padding-top: 7px; color: var(--muted); border-top: 1px solid #e1e6ea; font-size: 11px; } .ds-consult-card:hover { border-color: var(--blue); } .ds-consult-card:focus-visible { outline: 3px solid rgba(22,104,154,.32); outline-offset: 2px; } .ds-consult-card:active { cursor: grabbing; }"
+    },
+    {
+      "name": "Selected Evidence Item",
+      "kind": "custom",
+      "description": "A removable chart fact that previews exactly what the receiving consultant will see.",
+      "html": "<div class=\"ds-selected-evidence\"><b>Blood cultures</b><span>Two sets collected before antibiotics; 1 of 4 bottles positive.</span><button type=\"button\">Remove</button></div>",
+      "css": ".ds-selected-evidence { display: grid; grid-template-columns: 120px 1fr auto; gap: 10px; align-items: center; padding: 8px 10px; color: var(--ink); background: #fff; border: 1px solid #bac8d2; border-radius: 4px; font: 400 14px/1.35 'Segoe UI', Arial, sans-serif; } .ds-selected-evidence b { font-size: 11px; } .ds-selected-evidence button { color: var(--blue); background: transparent; border: 0; font-weight: 650; cursor: pointer; } .ds-selected-evidence button:hover { color: var(--blue-hover); text-decoration: underline; } .ds-selected-evidence button:focus-visible { outline: 3px solid rgba(22,104,154,.32); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Clinical Workbench",
+    "overview": "This system should feel like a focused Windows workstation used during real inpatient coordination: compact, explicit, and built to keep patient context and pending work visible. Its visual language is code-led rather than decorative. Cool neutral surfaces, thin structural borders, compact controls, and a single blue action color create familiarity without reproducing any proprietary EHR screen or asset.\n\nThe interface is dense but not cramped. Hierarchy comes from persistent context bands, sectional headers, tabular alignment, and restrained semantic color. Clinical decisions remain visible and reviewable: urgency, ownership, uncertainty, pending information, generated content, and final clinician action are presented as text as well as color. Every scenario is synthetic and the persistent synthetic-data label is part of the interface contract.",
+    "keyCharacteristics": [
+      "Windows-native Segoe UI typography with compact, predictable control sizing.",
+      "Cool gray-blue structure, white work surfaces, and restrained blue emphasis.",
+      "Border-led hierarchy with shadows reserved for floating or modal layers.",
+      "Persistent patient context and plain-language status at decision points.",
+      "Original components informed by familiar inpatient workflow conventions, never proprietary imitation."
+    ],
+    "rules": [
+      { "name": "The Semantic Rarity Rule", "body": "Use amber, red, teal, and green only to encode a named state or consequential action; never distribute them as decoration.", "section": "colors" },
+      { "name": "The Text Plus Color Rule", "body": "Every state must remain understandable from its label, iconography, or surrounding copy when color is unavailable.", "section": "colors" },
+      { "name": "The Native Clarity Rule", "body": "Keep Segoe UI as the first font on Windows and do not introduce display faces, decorative italics, or oversized marketing typography into clinical routes.", "section": "typography" },
+      { "name": "The Context Before Task Rule", "body": "Patient identity and encounter context must appear above the editable or actionable workspace and remain visually distinct from it.", "section": "layout" },
+      { "name": "The Dense, Not Crowded Rule", "body": "Prefer sectional borders, 8–18px spacing, and aligned columns over oversized whitespace or card grids.", "section": "layout" },
+      { "name": "The Flat-by-Default Rule", "body": "If a surface is not floating, sticky, modal, or draggable, separate it with tone and border rather than shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep patient identity, encounter context, synthetic-data labeling, ownership, urgency, pending information, and status visible at the point of action.",
+      "Do use compact Segoe UI typography, tabular numerals, aligned grids, and one-pixel dividers to support rapid scanning on Windows and Edge.",
+      "Do preserve explicit hover, focus-visible, selected, disabled, error, recording, generating, drag, drop-target, and confirmation states.",
+      "Do keep generated content editable and pair it with an explicit clinician-review requirement.",
+      "Do use semantic HTML controls, associated labels, keyboard-visible focus, live regions where state changes, and reduced-motion support."
+    ],
+    "donts": [
+      "Don't imply that this original prototype is an official Epic product, integration, endorsement, or exact reproduction.",
+      "Don't copy proprietary assets or screens, or trade durable clinical context for a consumer-app aesthetic.",
+      "Don't use color alone for status, urgency, error, selection, ownership, or completion.",
+      "Don't add decorative gradients, glass, large pill controls, oversized marketing type, or shadows to ordinary in-flow panels.",
+      "Don't hide uncertainty, pending information, provenance, or the need for clinician review behind generated summaries or automated routing."
+    ]
+  }
+}

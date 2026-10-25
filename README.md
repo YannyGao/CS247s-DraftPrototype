@@ -8,6 +8,17 @@ This repository is the home base for three research prototypes exploring how dig
 
 The goal is not to build a production clinical system. We are creating focused prototypes that let us observe behavior, compare interaction approaches, and learn where a tool helps or adds burden. Each prototype should remain small enough to test one primary question well.
 
+## Local prototype links
+
+On Windows, open PowerShell in the repository, run `npm start`, and then open one of these localhost routes in Microsoft Edge or Google Chrome:
+
+- [Prototype home](http://localhost:4173/)
+- [Prototype 1 — Consultant work board](http://localhost:4173/dashboard/)
+- [Prototype 2 — Consultation note entry](http://localhost:4173/note-entry/)
+- [Prototype 3 — Structured consultation request](http://localhost:4173/request-template/)
+
+The prototypes use synthetic test data and are not for clinical use. The note-entry microphone flow requires browser permission. Local environment values belong in `.env.local` and must never be committed.
+
 ## Project background
 
 Interviews with hospitalists, consultants, and clinical workflow experts describe consultation as a parallel, interruption-heavy process. A consultant may receive a page while managing active patients, reconstruct the clinical context from several sources, clarify the question by phone, see the patient, discuss the case with a supervisor, communicate an interim plan, write a note, and continue following pending results.
@@ -49,7 +60,7 @@ Can consultants use a persistent visual board to recognize new work, decide whet
 
 ### Core experience
 
-The participant enters a page where a floating consultation board is already open. It should feel like a persistent work surface layered above the underlying clinical workspace: visually distinct, always available, and not dismissible during the test. The prototype begins with several consultation cards already distributed across the board.
+The participant enters a page where a floating consultation board is already open. It should feel like a persistent work surface layered above the underlying clinical workspace: visually distinct, movable, resizable, always available, and not dismissible during the test. The prototype begins with several consultation cards already distributed across the board.
 
 Suggested board columns:
 

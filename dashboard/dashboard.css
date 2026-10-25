@@ -1,0 +1,95 @@
+.clinical-background { position: relative; min-height: calc(100dvh - 108px); padding-right: 590px; }
+.request-stage { overflow: hidden; }
+.request-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 14px; border-bottom: 1px solid var(--line); background: #fbfcfd; }
+.request-header h1 { margin: 0; font-size: 22px; letter-spacing: -.015em; }
+.request-patient { display: grid; grid-template-columns: 1.2fr repeat(3, 1fr); background: var(--surface-blue); border-bottom: 1px solid #ddc9c4; }
+.request-patient > div { padding: 10px 14px; border-right: 1px solid #e4d5d1; }
+.request-patient strong { display: block; font-size: 15px; }
+.request-patient span, .request-patient small { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; }
+.request-patient b { display: block; margin-top: 2px; font-size: 12px; }
+.request-body { display: grid; grid-template-columns: minmax(0, 1fr) 235px; }
+.request-body > section { padding: 20px; }
+.request-body h2, .reject-form h2 { margin: 0 0 8px; font-size: 14px; }
+.clinical-question { margin: 0 0 18px; max-width: 72ch; font-size: 16px; line-height: 1.52; }
+.evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.evidence-grid div { min-height: 68px; padding: 10px 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.evidence-grid dt { margin-bottom: 4px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.evidence-grid dd { margin: 0; line-height: 1.4; }
+.request-timeline { padding: 20px 16px; background: #f7f9fa; border-left: 1px solid var(--line); }
+.request-timeline ol { list-style: none; margin: 12px 0 0; padding: 0; }
+.request-timeline li { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid #dde3e8; line-height: 1.35; }
+.request-timeline time { color: var(--blue); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.request-actions { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); background: #f7f9fa; }
+.reject-form { border-top: 1px solid var(--line-strong); background: #fffafa; }
+.reject-heading { display: flex; justify-content: space-between; padding: 15px 18px 8px; }
+.reject-heading p { margin: 0; color: var(--muted); }
+.reject-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 8px 18px 16px; }
+.reject-fields .full { grid-column: 1 / -1; }
+.decision-confirmation { margin: 16px 18px; padding: 14px; border: 1px solid #9ac4ad; background: #eef8f2; color: #28563b; border-radius: 4px; }
+.background-list { margin-top: 16px; overflow: hidden; opacity: .82; }
+.background-list table { width: 100%; border-collapse: collapse; }
+.background-list th, .background-list td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+.background-list th { color: var(--muted); background: #f4f7f9; font-size: 11px; }
+
+.consult-board {
+  position: fixed;
+  z-index: 20;
+  right: 24px;
+  top: 126px;
+  width: 540px;
+  height: 760px;
+  min-width: 410px;
+  min-height: 390px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100dvh - 150px);
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  overflow: hidden;
+  resize: both;
+  background: #fff;
+  border: 1px solid #7f91a1;
+  border-radius: 7px;
+  box-shadow: var(--shadow);
+}
+.board-titlebar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; color: #fff; background: #8c1515; border-bottom: 1px solid #5f0d0d; cursor: move; user-select: none; touch-action: none; }
+.board-titlebar:active { cursor: grabbing; }
+.board-titlebar.moving { cursor: grabbing; }
+.board-titlebar:focus-visible { outline: 3px solid rgba(255,255,255,.78); outline-offset: -4px; }
+.board-titlebar strong { display: block; font-size: 15px; }
+.board-titlebar span { display: block; margin-top: 1px; color: #f0deda; font-size: 11px; }
+.board-titlebar .resize-hint { color: #f6e9e6; font-size: 10px; }
+.board-toolbar { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 4px 10px 4px 14px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+.board-toolbar .button { min-height: 28px; padding: 3px 7px; font-size: 11px; }
+.consult-list { overflow-y: auto; background: #edf2f5; padding: 8px; }
+.consult-card { position: relative; display: grid; grid-template-columns: 6px 1fr; margin-bottom: 7px; border: 1px solid #b9c5ce; border-radius: 5px; background: #fff; box-shadow: 0 1px 2px rgba(25, 51, 70, .08); cursor: grab; }
+.consult-card.dragging { opacity: .45; cursor: grabbing; }
+.consult-card.drop-target { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(140,21,21,.18); }
+.priority-marker { background: #96a7b5; border-radius: 4px 0 0 4px; }
+.consult-card[data-urgency="Urgent"] .priority-marker { background: #b14a4a; }
+.card-body { padding: 10px 11px 9px; }
+.card-line { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.card-line strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-line .status { margin-left: auto; flex: 0 0 auto; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 5px 0 6px; color: var(--muted); font-size: 11px; }
+.card-question { margin: 0; color: #283540; line-height: 1.35; }
+.card-owner { margin-top: 7px; padding-top: 7px; border-top: 1px solid #e1e6ea; color: var(--muted); font-size: 11px; }
+.board-footer { display: flex; justify-content: space-between; padding: 8px 12px; border-top: 1px solid var(--line); color: var(--muted); background: #f7f9fa; font-size: 11px; }
+.board-footer b { color: var(--ink); }
+
+@media (max-width: 1180px) {
+  .clinical-background { padding-right: 18px; }
+  .consult-board { top: 118px; right: 18px; width: 480px; background: rgba(255,255,255,.99); }
+  .request-stage { margin-right: 500px; }
+  .request-body { grid-template-columns: 1fr; }
+  .request-timeline { display: none; }
+}
+
+.dashboard-brand {
+  display: block;
+  flex: 0 0 210px;
+  width: 210px;
+  white-space: nowrap;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+}
+

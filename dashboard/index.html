@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consultant Work Board</title>
+  <link rel="stylesheet" href="/shared/styles.css">
+  <link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+<body>
+  <div class="app-shell dashboard-shell">
+    <header class="topbar">
+      <strong class="dashboard-brand">Stanford Health Care</strong>
+      <nav class="topbar-nav" aria-label="Clinical workspace"><span>Patient List</span><span class="active">Consults</span><span>Results</span><span>Messages</span></nav>
+      <span class="synthetic-banner">Synthetic test data</span>
+    </header>
+
+    <section class="patient-strip" aria-label="Current ED context">
+      <div><strong>Emergency Department</strong><small>Consult coordination workspace</small></div>
+      <div><small>Current time</small><b class="tabular">18:05</b></div>
+      <div><small>Active patients</small><b class="tabular">38</b></div>
+      <div><small>Pending consults</small><b class="tabular">8</b></div>
+      <div><small>Coverage</small><b>Evening</b></div>
+    </section>
+
+    <main class="workspace clinical-background">
+      <section class="panel request-stage" id="incoming-stage">
+        <div class="request-header">
+          <div>
+            <h1>Review incoming consult</h1>
+          </div>
+          <span class="status urgent">Urgent · 60 min</span>
+        </div>
+
+        <div class="request-patient">
+          <div><strong>Morgan Testpatient</strong><span>43 years · they/them</span></div>
+          <div><small>MRN</small><b>SYN-MRN-100001</b></div>
+          <div><small>Location</small><b>ED Bay 18</b></div>
+          <div><small>Requesting service</small><b>Emergency Medicine</b></div>
+        </div>
+
+        <div class="request-body">
+          <section>
+            <h2>Decision needed</h2>
+            <p class="clinical-question">Recommend empiric antimicrobial coverage and diagnostic next steps for suspected native-knee septic arthritis with preliminary gram-positive cocci in blood cultures.</p>
+            <dl class="evidence-grid">
+              <div><dt>Current concern</dt><dd>Purulent knee aspirate; operative washout planned for 21:00</dd></div>
+              <div><dt>Synovial fluid</dt><dd>82,400 cells/µL · 94% PMNs · no crystals</dd></div>
+              <div><dt>Microbiology</dt><dd>Gram-positive cocci in clusters; 1 of 4 blood-culture bottles positive</dd></div>
+              <div><dt>Current therapy</dt><dd>Vancomycin loading dose + ceftriaxone after cultures</dd></div>
+              <div><dt>Renal status</dt><dd>Creatinine 1.28 mg/dL from baseline 0.82</dd></div>
+              <div><dt>Best contact</dt><dd>Dr. Elena Park · 555-010-1180</dd></div>
+            </dl>
+          </section>
+
+          <aside class="request-timeline">
+            <h2>Request activity</h2>
+            <ol>
+              <li><time>14:50</time><span>Two blood-culture sets collected</span></li>
+              <li><time>16:08</time><span>Left knee aspirated</span></li>
+              <li><time>16:20</time><span>Empiric antibiotics started</span></li>
+              <li><time>17:38</time><span>Preliminary blood culture resulted</span></li>
+              <li><time>18:05</time><span>Consult request sent</span></li>
+            </ol>
+          </aside>
+        </div>
+
+        <div class="request-actions" id="request-actions">
+          <button class="button danger" id="reject-button">Reject or redirect</button>
+          <button class="button primary" id="accept-button">Accept consult</button>
+        </div>
+
+        <form class="reject-form hidden" id="reject-form">
+          <div class="reject-heading"><div><h2>Reject or redirect request</h2><p>The reason and routing details are optional.</p></div><button type="button" class="button quiet" id="cancel-reject">Cancel</button></div>
+          <div class="reject-fields">
+            <div class="field"><label for="reject-reason">Reason</label><select id="reject-reason"><option value="">No reason selected</option><option>Wrong specialty or service</option></select></div>
+            <div class="field"><label for="redirect-team">Suggested team</label><select id="redirect-team"><option value="">No team selected</option><option>Orthopedic Surgery</option><option>Rheumatology</option><option>Hospital Medicine</option><option>Microbiology / Stewardship</option></select></div>
+            <div class="field full"><label for="redirect-note">Optional note</label><textarea id="redirect-note" rows="3" placeholder="Add context for the requesting team"></textarea></div>
+          </div>
+          <div class="request-actions"><button type="submit" class="button danger">Confirm rejection</button></div>
+        </form>
+
+        <div class="decision-confirmation hidden" id="decision-confirmation" role="status"></div>
+      </section>
+
+      <section class="background-list panel" aria-label="ED patients beneath consult panel">
+        <div class="panel-heading"><h2>ED active patients</h2><span class="micro">Updated 18:04</span></div>
+        <table><thead><tr><th>Patient</th><th>Room</th><th>Primary concern</th><th>Disposition</th><th>Owner</th></tr></thead><tbody>
+          <tr><td>Daniel Example, 58</td><td>ED-07</td><td>Hypercalcemia; suspected malignancy recurrence</td><td>Admit pending</td><td>Dr. P. Nair</td></tr>
+          <tr><td>Sam Demo, 70</td><td>ED-09</td><td>Dyspnea; volume overload</td><td>Cardiology review</td><td>Dr. J. Ross</td></tr>
+          <tr><td>Lee Sample, 35</td><td>ED-12</td><td>Abdominal pain</td><td>Imaging pending</td><td>Dr. A. Gray</td></tr>
+          <tr><td>Robin Example, 81</td><td>ED-15</td><td>Fall; anticoagulated</td><td>Observation</td><td>Dr. K. Mills</td></tr>
+          <tr><td>Morgan Testpatient, 43</td><td>ED-18</td><td>Fever; painful swollen knee</td><td>Admit pending</td><td>Dr. E. Park</td></tr>
+        </tbody></table>
+      </section>
+    </main>
+
+    <aside class="consult-board" id="consult-board" aria-label="Consultant work board">
+      <div class="board-titlebar" id="board-drag-handle" tabindex="0" role="toolbar" aria-label="Move consultant work board. Drag with the pointer or use arrow keys.">
+        <div><strong>My consults</strong><span id="board-subtitle">14 active and completed</span></div>
+        <span class="resize-hint">Drag header to move · corner to resize</span>
+      </div>
+      <div class="tabs" id="status-tabs" role="tablist" aria-label="Consult status filters"></div>
+      <div class="board-toolbar"><span id="view-summary">All consults · ranked</span><button class="button quiet" id="reset-order">Reset order</button></div>
+      <div class="consult-list" id="consult-list" aria-live="polite"></div>
+      <div class="board-footer"><span><b id="visible-count">14</b> consults</span><span>Drag cards to reprioritize</span></div>
+    </aside>
+  </div>
+  <script type="module" src="/dashboard/dashboard.js"></script>
+</body>
+</html>
+
