@@ -1,4 +1,4 @@
-import { consultations, incomingIdConsult } from "/shared/data.js";
+import { consultations, incomingIdConsult } from "../shared/data.js";
 
 const list = document.querySelector("#consult-list");
 const tabs = document.querySelector("#status-tabs");

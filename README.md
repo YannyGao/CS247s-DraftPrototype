@@ -8,14 +8,16 @@ This repository is the home base for three research prototypes exploring how dig
 
 The goal is not to build a production clinical system. We are creating focused prototypes that let us observe behavior, compare interaction approaches, and learn where a tool helps or adds burden. Each prototype should remain small enough to test one primary question well.
 
-## Local prototype links
+## Public prototype links
 
-On Windows, open PowerShell in the repository, run `npm start`, and then open one of these localhost routes in Microsoft Edge or Google Chrome:
+- [Prototype home](https://yannygao.github.io/CS247s-DraftPrototype/)
+- [Prototype 1 — Consultant work board](https://yannygao.github.io/CS247s-DraftPrototype/dashboard/)
+- [Prototype 2 — Consultation note entry](https://yannygao.github.io/CS247s-DraftPrototype/note-entry/)
+- [Prototype 3 — Structured consultation request](https://yannygao.github.io/CS247s-DraftPrototype/request-template/)
 
-- [Prototype home](http://localhost:4173/)
-- [Prototype 1 — Consultant work board](http://localhost:4173/dashboard/)
-- [Prototype 2 — Consultation note entry](http://localhost:4173/note-entry/)
-- [Prototype 3 — Structured consultation request](http://localhost:4173/request-template/)
+## Local development
+
+On Windows, open PowerShell in the repository, run `npm start`, and then open [http://localhost:4173/](http://localhost:4173/) in Microsoft Edge or Google Chrome.
 
 The prototypes use synthetic test data and are not for clinical use. The note-entry microphone flow requires browser permission. Local environment values belong in `.env.local` and must never be committed.
 
