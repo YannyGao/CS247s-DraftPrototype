@@ -29,9 +29,9 @@ The work occurs in an Epic-familiar inpatient environment on Windows. Sessions a
 ## Capabilities and Constraints
 
 - Three completely separate prototype routes.
-- Consultant dashboard: persistent movable and resizable floating panel, about fifteen ranked consults, five visible by default, All/New/In Progress/Completed tabs, drag-to-reprioritize, and an incoming Infectious Diseases consult that may be accepted or rejected.
+- Hospitalist consult tracker: one full-screen table of consults requested by the hospitalist's team. Selecting a row opens a focused detail overlay with the four-stage timeline Submitted, Accepted, Paged back, and Completed. This prototype does not test consultant triage, acceptance controls, rejection, ranking, or drag-and-drop.
 - Rejection: optional reason of wrong specialty or service, optional destination team, and optional note.
-- Note entry: the same synthetic case is completed by direct typing or live microphone transcription, followed by an editable generated summary.
+- Note entry: a specialist completes a final consult note either in one direct-typing field or through live microphone transcription followed by an editable professional rewrite. The case reference omits the specialist's recommendations, and the rewrite must not add clinical content.
 - Request template: synthetic chart context beside an adaptive form; participant chooses which evidence to include. Initial test configuration is Infectious Diseases.
 - Real API keys remain local and Git-ignored. Browser code never receives a server-side key.
 - Synthetic test data only. No clinical use, real patient data, or diagnostic claims.

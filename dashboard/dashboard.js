@@ -1,185 +1,78 @@
-import { consultations, incomingIdConsult } from "../shared/data.js";
+const consults = [
+  { id: "morgan", patient: "Morgan Testpatient", age: 43, pronouns: "they/them", mrn: "SYN-MRN-100001", specialty: "Infectious Diseases", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, submitted: "Today, 14:50", requester: "Dr. Elena Park", question: "Antimicrobial plan for suspected septic arthritis", context: "Fever and acute left-knee pain with purulent aspirate. Orthopedic washout is planned for tonight." },
+  { id: "daniel", patient: "Daniel Example", age: 58, pronouns: "he/him", mrn: "SYN-MRN-100002", specialty: "Medical Oncology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, submitted: "Today, 13:18", requester: "Dr. Priya Nair", question: "Evaluation of suspected recurrent malignancy", context: "Severe hypercalcemia with new pulmonary, adrenal, and osseous lesions. Admission is pending." },
+  { id: "taylor", patient: "Taylor Morgan", age: 67, pronouns: "she/her", mrn: "SYN-MRN-100003", specialty: "Cardiology", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, submitted: "Today, 10:42", requester: "Dr. Noah Shah", question: "Rate-control guidance for new atrial fibrillation", context: "Persistent rapid ventricular response after initial metoprolol; patient remains hemodynamically stable." },
+  { id: "rowan", patient: "Rowan Lee", age: 54, pronouns: "he/him", mrn: "SYN-MRN-100004", specialty: "Nephrology", status: "Completed", statusClass: "complete", currentStatus: "Consult completed", stage: 3, submitted: "Today, 08:36", requester: "Dr. Evelyn Chen", question: "Management of AKI with persistent hyperkalemia", context: "Creatinine rose from 1.1 to 3.4 mg/dL. Potassium remained elevated after temporizing therapy." },
+  { id: "alexis", patient: "Alexis Wright", age: 72, pronouns: "she/her", mrn: "SYN-MRN-100005", specialty: "Pulmonology", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, submitted: "Yesterday, 16:05", requester: "Dr. Lena Ortiz", question: "New oxygen requirement after aspiration event", context: "Now requiring 3 L nasal cannula. Chest radiograph and repeat blood gas are pending." },
+  { id: "casey", patient: "Casey Patel", age: 39, pronouns: "they/them", mrn: "SYN-MRN-100006", specialty: "Gastroenterology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, submitted: "Yesterday, 14:22", requester: "Dr. Martin Gray", question: "Evaluation of acute liver injury", context: "Marked aminotransferase elevation with intact mental status; medication and viral causes are under review." },
+  { id: "riley", patient: "Riley Brooks", age: 81, pronouns: "she/her", mrn: "SYN-MRN-100007", specialty: "Palliative Care", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, submitted: "Yesterday, 11:40", requester: "Dr. Maya Young", question: "Symptom support and goals discussion", context: "Family meeting requested following recurrent admission and progressive functional decline." },
+  { id: "sam", patient: "Sam Demo", age: 70, pronouns: "he/him", mrn: "SYN-MRN-100008", specialty: "Cardiology", status: "Completed", statusClass: "complete", currentStatus: "Consult completed", stage: 3, submitted: "Oct 23, 09:15", requester: "Dr. Jordan Ross", question: "Diuresis plan for acute decompensated heart failure", context: "Volume overload improved after IV diuresis. Final recommendations have been documented." }
+];
 
-const list = document.querySelector("#consult-list");
-const tabs = document.querySelector("#status-tabs");
-const visibleCount = document.querySelector("#visible-count");
-const viewSummary = document.querySelector("#view-summary");
-const requestActions = document.querySelector("#request-actions");
-const rejectForm = document.querySelector("#reject-form");
-const confirmation = document.querySelector("#decision-confirmation");
-const consultBoard = document.querySelector("#consult-board");
-const boardDragHandle = document.querySelector("#board-drag-handle");
+const rows = document.querySelector("#consult-rows");
+const dialog = document.querySelector("#consult-dialog");
+const timeline = document.querySelector("#consult-timeline");
 
-let items = structuredClone(consultations);
-let activeTab = "All";
-let draggedId = null;
-const originalOrder = items.map((item) => item.id);
-
-function setBoardPosition(left, top) {
-  const margin = 8;
-  const rect = consultBoard.getBoundingClientRect();
-  const maxLeft = Math.max(margin, window.innerWidth - rect.width - margin);
-  const maxTop = Math.max(margin, window.innerHeight - rect.height - margin);
-  consultBoard.style.left = `${Math.min(Math.max(left, margin), maxLeft)}px`;
-  consultBoard.style.top = `${Math.min(Math.max(top, margin), maxTop)}px`;
-  consultBoard.style.right = "auto";
+function rowMarkup(consult) {
+  return `<tr tabindex="0" data-consult-id="${consult.id}" aria-label="Open ${consult.patient} consult details">
+    <td><div class="patient-cell"><span class="record-icon" aria-hidden="true">▤</span><strong>${consult.patient}</strong></div></td>
+    <td class="mrn">${consult.mrn}</td>
+    <td>${consult.specialty}</td>
+    <td><span class="status ${consult.statusClass}">${consult.status}</span></td>
+    <td class="submitted">${consult.submitted}</td>
+    <td class="question-cell" title="${consult.question}">${consult.question}</td>
+  </tr>`;
 }
 
-boardDragHandle.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0) return;
-  const rect = consultBoard.getBoundingClientRect();
-  const offsetX = event.clientX - rect.left;
-  const offsetY = event.clientY - rect.top;
-  boardDragHandle.setPointerCapture(event.pointerId);
-  boardDragHandle.classList.add("moving");
-  setBoardPosition(rect.left, rect.top);
-
-  const move = (moveEvent) => setBoardPosition(moveEvent.clientX - offsetX, moveEvent.clientY - offsetY);
-  const stop = () => {
-    boardDragHandle.classList.remove("moving");
-    boardDragHandle.removeEventListener("pointermove", move);
-    boardDragHandle.removeEventListener("pointerup", stop);
-    boardDragHandle.removeEventListener("pointercancel", stop);
-  };
-
-  boardDragHandle.addEventListener("pointermove", move);
-  boardDragHandle.addEventListener("pointerup", stop);
-  boardDragHandle.addEventListener("pointercancel", stop);
-  event.preventDefault();
-});
-
-boardDragHandle.addEventListener("keydown", (event) => {
-  const directions = {
-    ArrowLeft: [-1, 0],
-    ArrowRight: [1, 0],
-    ArrowUp: [0, -1],
-    ArrowDown: [0, 1],
-  };
-  if (!directions[event.key]) return;
-  const [x, y] = directions[event.key];
-  const rect = consultBoard.getBoundingClientRect();
-  const step = event.shiftKey ? 40 : 10;
-  setBoardPosition(rect.left + x * step, rect.top + y * step);
-  event.preventDefault();
-});
-
-window.addEventListener("resize", () => {
-  const rect = consultBoard.getBoundingClientRect();
-  setBoardPosition(rect.left, rect.top);
-});
-
-function statusClass(status) {
-  if (status === "New") return "new";
-  if (status === "In Progress") return "progress";
-  return "complete";
-}
-
-function filteredItems() {
-  return activeTab === "All" ? items : items.filter((item) => item.status === activeTab);
-}
-
-function renderTabs() {
-  const options = ["All", "New", "In Progress", "Completed"];
-  tabs.innerHTML = options.map((option) => {
-    const count = option === "All" ? items.length : items.filter((item) => item.status === option).length;
-    return `<button class="tab ${option === activeTab ? "active" : ""}" role="tab" aria-selected="${option === activeTab}" data-tab="${option}">${option}<span class="count">${count}</span></button>`;
-  }).join("");
-}
-
-function renderList() {
-  const current = filteredItems();
-  visibleCount.textContent = current.length;
-  viewSummary.textContent = `${activeTab} consults · ranked`;
-  list.innerHTML = current.map((item, index) => `
-    <article class="consult-card" draggable="true" data-id="${item.id}" data-urgency="${item.urgency}" tabindex="0" aria-label="Priority ${index + 1}: ${item.patient}, ${item.question}">
-      <span class="priority-marker" aria-hidden="true"></span>
-      <div class="card-body">
-        <div class="card-line"><strong>${index + 1}. ${item.patient}, ${item.age}</strong><span class="status ${statusClass(item.status)}">${item.status}</span></div>
-        <div class="card-meta"><span>${item.service}</span><span>${item.location}</span><span>Received ${item.received}</span><span>${item.urgency}</span></div>
-        <p class="card-question">${item.question}</p>
-        <div class="card-owner">${item.owner} · ${item.detail}</div>
-      </div>
-    </article>`).join("");
-  bindDragEvents();
-}
-
-function render() {
-  renderTabs();
-  renderList();
-  document.querySelector("#board-subtitle").textContent = `${items.filter((item) => item.status !== "Completed").length} active · ${items.filter((item) => item.status === "Completed").length} completed`;
-}
-
-tabs.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-tab]");
-  if (!button) return;
-  activeTab = button.dataset.tab;
-  render();
-});
-
-function bindDragEvents() {
-  list.querySelectorAll(".consult-card").forEach((card) => {
-    card.addEventListener("dragstart", () => {
-      draggedId = card.dataset.id;
-      card.classList.add("dragging");
-    });
-    card.addEventListener("dragend", () => {
-      draggedId = null;
-      card.classList.remove("dragging");
-      list.querySelectorAll(".drop-target").forEach((target) => target.classList.remove("drop-target"));
-    });
-    card.addEventListener("dragover", (event) => {
-      event.preventDefault();
-      if (card.dataset.id !== draggedId) card.classList.add("drop-target");
-    });
-    card.addEventListener("dragleave", () => card.classList.remove("drop-target"));
-    card.addEventListener("drop", (event) => {
-      event.preventDefault();
-      const targetId = card.dataset.id;
-      if (!draggedId || draggedId === targetId) return;
-      const draggedIndex = items.findIndex((item) => item.id === draggedId);
-      const targetIndex = items.findIndex((item) => item.id === targetId);
-      const [dragged] = items.splice(draggedIndex, 1);
-      items.splice(targetIndex, 0, dragged);
-      render();
-    });
+function updateTimeline(stage) {
+  const widths = [0, 25, 50, 75];
+  timeline.style.setProperty("--progress", `${widths[stage]}%`);
+  timeline.querySelectorAll("li").forEach((item, index) => {
+    item.classList.toggle("done", index < stage);
+    item.classList.toggle("current", index === stage);
   });
 }
 
-document.querySelector("#accept-button").addEventListener("click", () => {
-  if (!items.some((item) => item.id === incomingIdConsult.id)) items.unshift(structuredClone(incomingIdConsult));
-  activeTab = "All";
-  requestActions.classList.add("hidden");
-  rejectForm.classList.add("hidden");
-  confirmation.className = "decision-confirmation";
-  confirmation.innerHTML = `<strong>Consult accepted.</strong> Morgan Testpatient is now the first item in your ranked worklist. You can drag the card to change its priority.`;
-  render();
-  list.scrollTo({ top: 0, behavior: "smooth" });
+function openConsult(consult) {
+  document.querySelector("#detail-title").textContent = `${consult.patient} consult`;
+  document.querySelector("#current-status").textContent = consult.currentStatus;
+  document.querySelector("#detail-patient").textContent = consult.patient;
+  document.querySelector("#detail-identity").textContent = `${consult.age} years · ${consult.pronouns} · ${consult.mrn}`;
+  const badge = document.querySelector("#detail-status-badge");
+  badge.textContent = consult.status;
+  badge.className = `status ${consult.statusClass}`;
+  document.querySelector("#detail-specialty").textContent = consult.specialty;
+  document.querySelector("#detail-submitted").textContent = consult.submitted;
+  document.querySelector("#detail-requester").textContent = consult.requester;
+  document.querySelector("#detail-question").textContent = consult.question;
+  document.querySelector("#detail-context").textContent = consult.context;
+  updateTimeline(consult.stage);
+  dialog.showModal();
+}
+
+function findConsult(row) {
+  return consults.find((consult) => consult.id === row.dataset.consultId);
+}
+
+rows.addEventListener("click", (event) => {
+  const row = event.target.closest("[data-consult-id]");
+  if (row) openConsult(findConsult(row));
 });
 
-document.querySelector("#reject-button").addEventListener("click", () => {
-  requestActions.classList.add("hidden");
-  rejectForm.classList.remove("hidden");
-  document.querySelector("#reject-reason").focus();
-});
-
-document.querySelector("#cancel-reject").addEventListener("click", () => {
-  rejectForm.classList.add("hidden");
-  requestActions.classList.remove("hidden");
-});
-
-rejectForm.addEventListener("submit", (event) => {
+rows.addEventListener("keydown", (event) => {
+  if (!["Enter", " "].includes(event.key)) return;
+  const row = event.target.closest("[data-consult-id]");
+  if (!row) return;
   event.preventDefault();
-  const reason = document.querySelector("#reject-reason").value;
-  const team = document.querySelector("#redirect-team").value;
-  rejectForm.classList.add("hidden");
-  confirmation.className = "decision-confirmation";
-  confirmation.innerHTML = `<strong>Request returned to Emergency Medicine.</strong>${reason ? ` Reason: ${reason}.` : ""}${team ? ` Suggested destination: ${team}.` : ""} The request remains visible to the sender.`;
+  openConsult(findConsult(row));
 });
 
-document.querySelector("#reset-order").addEventListener("click", () => {
-  items.sort((a, b) => originalOrder.indexOf(a.id) - originalOrder.indexOf(b.id));
-  render();
+dialog.addEventListener("click", (event) => {
+  if (event.target === dialog) dialog.close();
 });
 
-render();
+rows.innerHTML = consults.map(rowMarkup).join("");
 
+const previewId = new URLSearchParams(window.location.search).get("consult");
+const previewConsult = consults.find((consult) => consult.id === previewId);
+if (previewConsult) openConsult(previewConsult);

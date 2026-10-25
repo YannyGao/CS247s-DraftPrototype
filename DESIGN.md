@@ -177,7 +177,7 @@ Use tabular numerals for timestamps, counts, identifiers, laboratory values, and
 
 The global frame stacks a 52px Stanford Cardinal top bar, a white patient-context strip, and a route-specific work area. Workspaces use compact 14–18px outer padding and 14–16px gaps. Panels use white surfaces, strong outer borders, and internally divided sections; information is aligned in grids so values can be compared quickly.
 
-The dashboard reserves space for a movable, resizable consult board while keeping the incoming decision visible beneath it. The note route uses a 330px reference column beside the editable note. The request route uses a near-even split between selectable chart evidence and the adaptive request form. Sticky headers or action rows preserve orientation and the next action in long panes.
+The dashboard is a single hospitalist-facing consult table with a focused row-detail overlay; no other workflow competes with that status-checking task. The note route uses a 330px reference column beside the editable note. The request route uses a near-even split between selectable chart evidence and the adaptive request form. Sticky headers or action rows preserve orientation and the next action in long panes.
 
 These prototypes are desktop research instruments, not mobile layouts. The shared minimum width is 1024px, relaxing to 900px below 1100px. At narrower desktop widths, columns compress deliberately: the note reference becomes 285px, the request evidence column becomes 420px, three-column forms become two columns, and the dashboard hides its secondary timeline before sacrificing the primary decision. Do not collapse patient identity or primary actions merely to simulate a phone layout.
 
@@ -187,14 +187,14 @@ These prototypes are desktop research instruments, not mobile layouts. The share
 
 ## Elevation & Depth
 
-The system is flat by default. Borders, subtle background shifts, and sticky regions provide most depth. The strong ambient shadow is reserved for genuinely floating layers: the resizable consult board and modal preview. Patient strips and sticky action rows use very light directional shadows only to clarify overlap.
+The system is flat by default. Borders, subtle background shifts, and sticky regions provide most depth. The strong ambient shadow is reserved for genuinely floating layers such as the consult-detail and request-preview dialogs. Patient strips and sticky action rows use very light directional shadows only to clarify overlap.
 
 ### Shadow Vocabulary
 
 - **Floating workspace** (`0 18px 42px rgba(25, 54, 78, 0.2), 0 3px 10px rgba(25, 54, 78, 0.12)`): Resizable work board and modal dialog only.
 - **Context separation** (`0 2px 6px rgba(29, 51, 69, .08)`): Patient context above a scrolling workspace.
 - **Sticky action separation** (`0 -4px 12px rgba(25,49,68,.07)`): Bottom action rows above scrolling form content.
-- **List card lift** (`0 1px 2px rgba(25, 51, 70, .08)`): Minimal separation for draggable worklist items.
+- **List-row separation** (`0 1px 2px rgba(25, 51, 70, .08)`): Minimal separation where an interactive list needs additional depth.
 
 **The Flat-by-Default Rule.** If a surface is not floating, sticky, modal, or draggable, separate it with tone and border rather than shadow.
 
@@ -223,7 +223,7 @@ Status labels pair compact bordered rectangles with explicit words such as New, 
 
 ### Cards / Containers
 
-Panels use the Paper Surface, a strong one-pixel border, and the panel radius. Their headings sit on a subtle cool surface with a bottom divider. Draggable consult cards use a narrow priority rail, compact metadata, a visible status label, and a text description; urgency may color the rail red, but the word “Urgent” remains in the card.
+Panels use the Paper Surface, a strong one-pixel border, and the panel radius. Their headings sit on a subtle cool surface with a bottom divider. Consult-table rows use aligned clinical identifiers, explicit text status labels, compact metadata, and a focused question; row hover and keyboard focus communicate that the detail view is available.
 
 ### Inputs / Fields
 
@@ -237,9 +237,9 @@ The Stanford Cardinal top bar establishes global workspace location. Navigation 
 
 Modal preview dialogs use a strong outline, the floating shadow, a dim neutral backdrop, and separate header, scrolling content, and action footer. Inline notices use semantic border, surface, and text colors. Error and browser-support notices use `role="alert"`; confirmations that update in place use a live status region.
 
-### Consultation Work Board
+### Hospitalist Consult Tracker
 
-The dashboard’s signature component is a persistent, movable, resizable floating worklist. Its title bar is a pointer drag handle and supports arrow-key movement, while the lower corner retains native resizing. It shows ranked consults, filtering tabs with counts, ownership and urgency, drag affordances, drop-target feedback, a reset action, and a visible list count. Accepting an incoming consult inserts it at the top and confirms the resulting state; rejecting or redirecting progressively reveals optional routing details without hiding the original request.
+The dashboard’s signature component is a restrained, Notion-like table showing the consults requested by the hospitalist's team. Each row exposes patient, MRN, specialty, current milestone, submitted time, and the focused consult question. Selecting one row opens a single protected-focus overlay. The overlay separates the current-status sentence from a four-stage milestone timeline: Submitted, Accepted, Paged back, and Completed. It contains only brief consult context and does not expose consultant controls, triage actions, ranking, or unrelated patient workflow.
 
 ### Reviewable Note Generation
 
@@ -249,7 +249,7 @@ The note-entry signature pattern compares direct typing with speech-assisted dra
 
 The request-template signature pattern keeps source evidence beside the destination form. Each chart fact has a native checkbox, descriptive detail, and compact value; selection updates both a count and a removable evidence list. Specialty changes replace only the relevant contextual fields. Review opens a consultant-facing preview of exactly what will be sent, and sending changes the visible request status from Draft to Sent.
 
-Motion is functional and restrained: native scrolling, a 1px button press, drag feedback, and a pulse only while recording. Respect `prefers-reduced-motion` by reducing animation and transition duration to near zero.
+Motion is functional and restrained: native scrolling, a 1px button press, brief timeline progress, and a pulse only while recording. Respect `prefers-reduced-motion` by reducing animation and transition duration to near zero.
 
 ## Do's and Don'ts
 
@@ -257,7 +257,7 @@ Motion is functional and restrained: native scrolling, a 1px button press, drag 
 
 - **Do** keep patient identity, encounter context, synthetic-data labeling, ownership, urgency, pending information, and status visible at the point of action.
 - **Do** use compact Segoe UI typography, tabular numerals, aligned grids, and one-pixel dividers to support rapid scanning on Windows and Edge.
-- **Do** preserve explicit hover, focus-visible, selected, disabled, error, recording, generating, drag, drop-target, and confirmation states.
+- **Do** preserve explicit hover, focus-visible, selected, disabled, error, recording, generating, dialog, and confirmation states.
 - **Do** keep generated content editable and pair it with an explicit clinician-review requirement.
 - **Do** use semantic HTML controls, associated labels, keyboard-visible focus, live regions where state changes, and reduced-motion support.
 

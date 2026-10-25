@@ -50,114 +50,75 @@ For each prototype, the team will:
 6. synthesize findings by prototype and then compare themes across all three;
 7. document design implications without treating prototype preference as proof of clinical effectiveness.
 
-## Prototype 1 Consultant work board
+## Prototype 1 Hospitalist consult tracker
 
 ### Purpose
 
-This prototype tests whether a consultant-controlled visual board makes parallel consultation work easier to understand and manage. It focuses on shared status, prioritization, and ownership rather than chart review or clinical decision support.
+This prototype tests whether a hospitalist can understand the status of requested consults at a glance and inspect one consult without navigating through the full clinical workflow.
 
 ### Primary research question
 
-Can consultants use a persistent visual board to recognize new work, decide whether to accept it, and reorganize active consultations without losing track of urgency, ownership, or next steps?
+Can hospitalists tell what has happened with a consult, what its current status is, and whether they are still waiting for a response?
 
 ### Core experience
 
-The participant enters a page where a floating consultation board is already open. It should feel like a persistent work surface layered above the underlying clinical workspace: visually distinct, movable, resizable, always available, and not dismissible during the test. The prototype begins with several consultation cards already distributed across the board.
+The participant sees one full-screen **My Consults** table modeled after a lightweight database view. Rows show the patient, synthetic MRN, requested specialty, current status, submitted time, and focused consult question. Selecting a row opens a detail overlay with a four-stage timeline: **Submitted → Accepted → Paged back → Completed**.
 
-Suggested board columns:
-
-- **New:** requests awaiting review;
-- **Accepted:** requests acknowledged by the current consultant or team;
-- **In progress:** chart review, clarification, bedside assessment, or staffing underway;
-- **Waiting:** blocked on a result, another clinician, or a future review point;
-- **Ready to close:** recommendations communicated and documentation or acknowledgement pending;
-- **Completed:** closed consultations retained for orientation during the session.
-
-The column labels are hypotheses, not final requirements. Early testing should determine whether consultants think in these stages or prefer a smaller, more flexible set.
+The overlay also states the current status in plain language, such as **Pending review from consultant** or **Accepted by consultant**. The first test keeps milestone language and current-status language separate so researchers can ask whether hospitalists prefer a backward-looking confirmation or a forward-looking phrase such as **Waiting for page back from consultant**.
 
 ### Required interactions
 
-- View a board pre-populated with realistic consultation cards.
-- Open a card to see the consultation question, requester, service, urgency, time received, patient summary, and current next action.
-- Drag a card within a column to reprioritize it.
-- Drag a card between columns to change its status.
-- Receive a new consultation while working on the board.
-- Accept or reject the new consultation.
-- If accepting, assign an owner and place the consult in the appropriate queue position.
-- If rejecting, select or enter a reason and indicate the correct service or next step when known.
-- See a lightweight history of status and ownership changes.
+- Scan the table and identify consults at different milestones.
+- Select one consult to open its focused detail view.
+- Read the current-status sentence and locate the corresponding point on the timeline.
+- Close the detail view and inspect another consult.
 
-Accept and reject should represent workflow decisions, not clinical approval or denial of care. A rejected request must remain visible to the requester in the prototype state and must include a reason or routing action. The experience should never imply that dismissing a card silently resolves the underlying patient need.
+### Scope boundary
 
-### Information on each card
-
-Cards should show only the information needed for triage:
-
-- fictional patient name and clearly fake medical record number;
-- age range or age, if relevant to the scenario;
-- requesting service and best-informed contact;
-- requested specialty;
-- focused clinical question or decision needed;
-- stated urgency and time expectation;
-- time received and elapsed time;
-- current owner;
-- status and next action;
-- one or two high-signal clinical facts;
-- indicators for pending results, discharge dependency, or escalation.
-
-Details such as a full chart, exhaustive laboratory history, or complete note should not appear unless they are necessary to test a specific triage decision.
+This iteration intentionally excludes consultant triage, accept/reject controls, prioritization, drag-and-drop, incoming-consult notifications, the ED worklist, and the full patient chart. Those are separate research questions and should not compete with the status-understanding task.
 
 ### Initial test tasks
 
-1. Review the existing board and explain what you would work on next.
-2. Reorder the cases to match your priorities.
-3. Move one case to reflect that you are waiting on a result.
-4. Respond to a newly arriving consult by accepting or rejecting it.
-5. Reassign or hand off one active case.
-6. Find which case is most at risk of being forgotten and explain why.
+1. Review the table and explain what is happening with each consult.
+2. Open a consult that has not yet been accepted and describe its status.
+3. Open a consult that has been accepted and explain what you expect to happen next.
+4. Compare **Accepted by consultant** with the alternative **Waiting for page back from consultant**.
 
 ### What to observe
 
-- Whether participants understand the meaning of columns without explanation.
-- Which card details they use when prioritizing.
-- Whether drag-and-drop feels faster and clearer than opening menus.
-- Whether moving a card is interpreted as changing status, changing priority, or both.
-- What evidence participants need before accepting or rejecting a request.
-- Whether rejection language feels clinically and professionally appropriate.
-- Whether the persistent floating board supports awareness or obstructs other work.
-- Whether consultants need specialty-specific views, filters, or multiple owners.
+- Whether the table can be understood without explanation.
+- Whether participants distinguish the current-status sentence from the milestone timeline.
+- Whether the four milestones match their mental model of the consult process.
+- Whether they prefer confirmation of the last completed milestone or language describing what they are waiting for next.
+- Whether the detail overlay contains enough context without becoming another chart view.
 
 ### Measures
 
-- Time to identify the next case to address.
-- Accuracy in locating urgent, discharge-blocking, and waiting cases.
-- Number of misplaced or unintentionally changed cards.
-- Time and confidence when accepting or rejecting a new request.
-- Ability to explain the current owner and next action for each active case.
-- Perceived workload and usefulness after the task.
+- Time to identify the current milestone for a requested consult.
+- Accuracy when explaining what has happened and what is expected next.
+- Confidence in the meaning of **Accepted**, **Paged back**, and **Completed**.
+- Perceived clarity and usefulness after the task.
 
 ### Key design decisions to resolve
 
-- Whether rejection should be named **redirect**, **return for clarification**, or another less ambiguous action.
-- Whether urgency should be set by the requester, adjusted by the consultant, or shown as both perspectives.
-- Whether priority is represented by vertical order, an explicit label, or both.
-- Whether the board is personal, team-based, or switchable between the two.
-- What must happen before a consultation can be marked complete.
+- Whether **Accepted by consultant** or **Waiting for page back from consultant** is more useful after acceptance.
+- Whether **Paged back** is a clear enough milestone label.
+- What hospitalists believe **Completed** means.
 
 ## Prototype 2 Consultation note entry comparison
 
 ### Purpose
 
-This prototype compares two ways of turning a consultant's reasoning into a usable consultation note:
+This prototype compares two ways a specialist can complete a final consultation note after evaluating the patient:
 
-- typing the note directly; and
-- speaking a case summary, reviewing a transcript, and using an LLM-assisted step to create a structured draft.
+- typing the note directly in one free-text field; and
+- dictating the note, reviewing the transcript, and using an LLM-assisted step to rewrite it in professional note language.
 
 The test is about workflow effort, accuracy, trust, and editability. It is not intended to show that speech or AI is inherently superior.
 
 ### Primary research question
 
-For a realistic completed consult, does speech-to-text followed by assisted summarization reduce documentation effort without reducing accuracy, control, or confidence compared with direct typing?
+For a realistic completed consult, does speech-to-text followed by assisted rewriting reduce documentation effort without reducing accuracy, control, or confidence compared with direct typing?
 
 ### Comparison design
 
@@ -165,22 +126,22 @@ Use a within-participant comparison when feasible: each participant completes bo
 
 #### Path A Direct typing
 
-1. Review the synthetic patient context and consultation question.
-2. Type a consultation note into an ordinary text editor.
+1. Review the synthetic patient context and reason for consultation. The specialist recommendation is intentionally omitted.
+2. Type a final consultation note into one ordinary free-text field.
 3. Review and submit the note.
 
 #### Path B Speech to text and assisted summary
 
-1. Review an equivalent synthetic patient context and consultation question.
-2. Speak an account of what happened, the assessment, and the plan.
+1. Review an equivalent synthetic patient context and reason for consultation. The specialist recommendation is intentionally omitted.
+2. Dictate the final note, including the assessment, recommendations, pending items, and follow-up.
 3. Review and correct the transcript.
-4. Generate an LLM-assisted structured draft from the corrected transcript.
+4. Generate an LLM-assisted professional rewrite from the corrected transcript. The rewrite must not add clinical content or infer a plan.
 5. Review, edit, and approve the draft.
 6. Submit the final note.
 
 The participant must always be able to inspect and edit both the transcript and the generated draft. The prototype should label generated text clearly and should never present it as independently verified.
 
-### Suggested note sections
+### Content participants may include
 
 - reason for consultation;
 - relevant history and findings;
@@ -194,7 +155,7 @@ The participant must always be able to inspect and edit both the transcript and 
 ### Initial test tasks
 
 1. Complete one note by typing directly.
-2. Complete a matched note by speaking, correcting the transcript, generating a draft, and editing it.
+2. Complete a matched note by speaking, correcting the transcript, creating a professionally rewritten draft, and editing it.
 3. Identify any statement in either final note that could be misleading or unsafe.
 4. Compare which process better preserved uncertainty, contingencies, and follow-up ownership.
 5. Explain when speech would or would not be appropriate in the participant's real work setting.
