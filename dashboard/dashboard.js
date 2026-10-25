@@ -17,6 +17,8 @@ const sortOrder = document.querySelector("#sort-order");
 const groupBy = document.querySelector("#group-by");
 const clearControls = document.querySelector("#clear-controls");
 const visibleCount = document.querySelector("#visible-count");
+const expandDialogButton = document.querySelector("#expand-dialog");
+let activeConsultIndex = 0;
 
 function rowMarkup(consult) {
   return `<tr tabindex="0" data-consult-id="${consult.id}" aria-label="Open ${consult.patient} consult details">
@@ -73,6 +75,8 @@ function renderRows() {
 }
 
 function openConsult(consult) {
+  activeConsultIndex = consults.findIndex((item) => item.id === consult.id);
+  rows.querySelectorAll("[data-consult-id]").forEach((row) => row.classList.toggle("is-open", row.dataset.consultId === consult.id));
   document.querySelector("#detail-title").textContent = `${consult.patient} consult`;
   document.querySelector("#current-status").textContent = consult.currentStatus;
   document.querySelector("#detail-patient").textContent = consult.patient;
@@ -86,7 +90,12 @@ function openConsult(consult) {
   document.querySelector("#detail-question").textContent = consult.question;
   document.querySelector("#detail-context").textContent = consult.context;
   updateTimeline(consult.stage);
-  dialog.showModal();
+  if (!dialog.open) dialog.showModal();
+}
+
+function moveConsult(direction) {
+  activeConsultIndex = (activeConsultIndex + direction + consults.length) % consults.length;
+  openConsult(consults[activeConsultIndex]);
 }
 
 function findConsult(row) {
@@ -110,6 +119,27 @@ rows.addEventListener("keydown", (event) => {
 
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
+});
+
+document.querySelector("#previous-consult").addEventListener("click", () => moveConsult(-1));
+document.querySelector("#next-consult").addEventListener("click", () => moveConsult(1));
+expandDialogButton.addEventListener("click", () => {
+  const expanded = dialog.classList.toggle("is-expanded");
+  expandDialogButton.setAttribute("aria-pressed", String(expanded));
+  expandDialogButton.setAttribute("aria-label", expanded ? "Restore consult details" : "Expand consult details");
+  expandDialogButton.textContent = expanded ? "⤡" : "⤢";
+});
+dialog.addEventListener("close", () => {
+  rows.querySelectorAll(".is-open").forEach((row) => row.classList.remove("is-open"));
+  dialog.classList.remove("is-expanded");
+  expandDialogButton.setAttribute("aria-pressed", "false");
+  expandDialogButton.setAttribute("aria-label", "Expand consult details");
+  expandDialogButton.textContent = "⤢";
+});
+
+dialog.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") moveConsult(-1);
+  if (event.key === "ArrowRight") moveConsult(1);
 });
 
 rows.addEventListener("change", (event) => {

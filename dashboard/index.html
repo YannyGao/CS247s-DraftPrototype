@@ -97,17 +97,25 @@
 
     <dialog class="consult-dialog" id="consult-dialog" aria-labelledby="detail-title">
       <form method="dialog" class="dialog-frame">
-        <header class="dialog-header">
+        <header class="dialog-toolbar" aria-label="Consult detail controls">
+          <div class="dialog-navigation">
+            <button type="button" class="dialog-icon-button" id="expand-dialog" aria-label="Expand consult details" aria-pressed="false">⤢</button>
+            <span class="toolbar-divider" aria-hidden="true"></span>
+            <button type="button" class="dialog-icon-button" id="previous-consult" aria-label="View previous consult">←</button>
+            <button type="button" class="dialog-icon-button" id="next-consult" aria-label="View next consult">→</button>
+          </div>
+          <button class="dialog-icon-button close-icon-button" value="cancel" aria-label="Close consult details">×</button>
+        </header>
+
+        <section class="dialog-titlebar">
           <div>
             <span class="dialog-label">Consult status</span>
             <h2 id="detail-title">Patient consult</h2>
           </div>
-          <button class="close-button" value="cancel" aria-label="Close consult details">Close</button>
-        </header>
-
-        <section class="status-summary" aria-live="polite">
-          <span>Currently</span>
-          <strong id="current-status">Pending review from consultant</strong>
+          <div class="status-summary" aria-live="polite">
+            <span>Currently</span>
+            <strong id="current-status">Pending review from consultant</strong>
+          </div>
         </section>
 
         <ol class="consult-timeline" id="consult-timeline" aria-label="Consult progress">
