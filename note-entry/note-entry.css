@@ -32,12 +32,10 @@
 .method b, .method span { display: block; }
 .method span { margin-top: 3px; font-size: 11px; }
 .note-content { min-height: 0; overflow-y: auto; }
-#typed-view { display: grid; grid-template-columns: 185px 1fr; }
-.note-section-nav { padding: 12px 8px; background: #f4f7f9; border-right: 1px solid var(--line); }
-.note-section-nav button { width: 100%; padding: 9px 10px; text-align: left; border: 0; border-radius: 3px; background: transparent; color: #465462; }
-.note-section-nav button:hover, .note-section-nav button.active { color: #133f5d; background: #e2eef5; }
+.entry-stage { display: grid; gap: 16px; padding: 18px; }
+.note-field textarea { min-height: 360px; }
 .typed-form { display: grid; gap: 16px; padding: 18px; }
-.typed-form textarea { min-height: 115px; }
+.typed-form .note-field textarea { min-height: 300px; }
 .voice-stage { padding: 18px; }
 .voice-controls { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 14px; border: 1px solid var(--line); background: #f7f9fa; border-radius: 5px; }
 .record-state { display: flex; align-items: center; gap: 11px; }

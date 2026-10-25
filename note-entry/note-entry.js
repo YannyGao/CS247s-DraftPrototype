@@ -26,11 +26,11 @@ methodButtons.forEach((button) => button.addEventListener("click", () => {
   voiceView.classList.toggle("hidden", activeMethod !== "voice");
 }));
 
-document.querySelectorAll(".note-section-nav button").forEach((button) => button.addEventListener("click", () => {
-  document.querySelectorAll(".note-section-nav button").forEach((item) => item.classList.remove("active"));
-  button.classList.add("active");
-  document.querySelector(`#${button.dataset.target}`).focus();
-}));
+const typedNote = document.querySelector("#typed-note");
+typedNote.addEventListener("input", () => {
+  const words = typedNote.value.trim() ? typedNote.value.trim().split(/\s+/).length : 0;
+  document.querySelector("#typed-word-count").textContent = `${words} word${words === 1 ? "" : "s"}`;
+});
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 if (SpeechRecognition) {
@@ -91,29 +91,35 @@ function updateTranscriptState() {
 transcript.addEventListener("input", updateTranscriptState);
 
 function renderSections(sections) {
-  generatedFields.innerHTML = Object.entries(sections).map(([label, value], index) => `<div class="field"><label for="generated-${index}">${label}</label><textarea id="generated-${index}">${value}</textarea></div>`).join("");
+  generatedFields.replaceChildren();
+  Object.entries(sections).forEach(([label, value], index) => {
+    const field = document.createElement("div");
+    field.className = "field note-field";
+    const fieldLabel = document.createElement("label");
+    fieldLabel.htmlFor = `generated-${index}`;
+    fieldLabel.textContent = label;
+    const fieldValue = document.createElement("textarea");
+    fieldValue.id = `generated-${index}`;
+    fieldValue.value = value;
+    const reminder = document.createElement("small");
+    reminder.textContent = "Review and edit before signing.";
+    field.append(fieldLabel, fieldValue, reminder);
+    generatedFields.append(field);
+  });
   generatedDraft.classList.remove("hidden");
   generatedDraft.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function createLocalDraft(sourceText) {
-  const sentences = sourceText
+  const polished = sourceText
     .replace(/\s+/g, " ")
-    .split(/(?<=[.!?])\s+/)
-    .map((sentence) => sentence.trim())
-    .filter(Boolean);
-  const find = (patterns) => sentences.filter((sentence) => patterns.some((pattern) => pattern.test(sentence))).slice(0, 3);
-  const assessment = find([/assess|concern|suspect|likely|consistent|impression/i]);
-  const recommendations = find([/recommend|plan|start|continue|obtain|monitor|follow|consult/i]);
-  const pending = find([/pending|await|follow[- ]?up|result|culture|biopsy|imaging/i]);
-
+    .replace(/\b(um|uh|you know)\b[,.]?\s*/gi, "")
+    .replace(/(^|[.!?]\s+)([a-z])/g, (match, lead, letter) => `${lead}${letter.toUpperCase()}`)
+    .trim();
   return {
     source: "local-fallback",
     sections: {
-      "Consult question": sentences[0] || "No consult question identified.",
-      Assessment: assessment.join(" ") || sentences.slice(1, 3).join(" ") || "No assessment identified.",
-      Recommendations: recommendations.map((item) => `• ${item}`).join("\n") || "• Review and edit the transcript to add recommendations.",
-      "Pending and follow-up": pending.map((item) => `• ${item}`).join("\n") || "• No pending items identified."
+      "Final oncology consult note": polished
     }
   };
 }
@@ -139,8 +145,8 @@ async function generateDraft(sourceText) {
 generateButton.addEventListener("click", async () => {
   stopRecording();
   generateButton.disabled = true;
-  generateButton.textContent = "Generating draft…";
-  summaryStatus.textContent = "Structuring the transcript. Keep this window open.";
+  generateButton.textContent = "Creating note…";
+  summaryStatus.textContent = "Rewriting the transcript without adding clinical content.";
   try {
     const data = await generateDraft(transcript.value);
     if (data.sections) renderSections(data.sections);
@@ -149,12 +155,12 @@ generateButton.addEventListener("click", async () => {
       renderSections({ "Generated consultation draft": text });
     }
     document.querySelector("#summary-source").textContent = data.source === "api" ? "API draft" : "Local demo draft";
-    summaryStatus.textContent = "Draft generated. Review and edit before approval.";
+    summaryStatus.textContent = "Draft created. Review it against the transcript before approval.";
   } catch (error) {
     summaryStatus.textContent = error.message;
   } finally {
     generateButton.disabled = transcript.value.trim().length < 20;
-    generateButton.textContent = "Generate structured draft";
+    generateButton.textContent = "Create polished note";
   }
 });
 
@@ -170,6 +176,7 @@ document.querySelector("#reset-note").addEventListener("click", () => {
   document.querySelectorAll("textarea").forEach((field) => { field.value = ""; });
   generatedDraft.classList.add("hidden");
   document.querySelector("#save-state").textContent = "Not saved";
+  document.querySelector("#typed-word-count").textContent = "0 words";
   updateTranscriptState();
 });
 

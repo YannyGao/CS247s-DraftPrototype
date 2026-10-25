@@ -33,24 +33,15 @@ const mimeTypes = {
 };
 
 function localSummary(transcript) {
-  const sentences = transcript
+  const polished = transcript
     .replace(/\s+/g, " ")
-    .split(/(?<=[.!?])\s+/)
-    .map((sentence) => sentence.trim())
-    .filter(Boolean);
-
-  const find = (patterns) => sentences.filter((sentence) => patterns.some((pattern) => pattern.test(sentence))).slice(0, 3);
-  const assessment = find([/assess|concern|suspect|likely|consistent|impression/i]);
-  const recommendations = find([/recommend|plan|start|continue|obtain|monitor|follow|consult/i]);
-  const pending = find([/pending|await|follow[- ]?up|result|culture|biopsy|imaging/i]);
-
+    .replace(/\b(um|uh|you know)\b[,.]?\s*/gi, "")
+    .replace(/(^|[.!?]\s+)([a-z])/g, (match, lead, letter) => `${lead}${letter.toUpperCase()}`)
+    .trim();
   return {
     source: "local-fallback",
     sections: {
-      "Consult question": sentences[0] || "No consult question identified.",
-      Assessment: assessment.join(" ") || sentences.slice(1, 3).join(" ") || "No assessment identified.",
-      Recommendations: recommendations.map((item) => `• ${item}`).join("\n") || "• Review and edit the transcript to add recommendations.",
-      "Pending and follow-up": pending.map((item) => `• ${item}`).join("\n") || "• No pending items identified."
+      "Final oncology consult note": polished
     }
   };
 }
@@ -67,7 +58,7 @@ async function summarizeWithOpenAI(transcript) {
     },
     body: JSON.stringify({
       model: process.env.OPENAI_MODEL || "gpt-5-mini",
-      instructions: "Transform the synthetic physician consult transcript into a concise draft with exactly four headings: Consult question, Assessment, Recommendations, Pending and follow-up. Preserve uncertainty and negation. Do not invent facts. This is synthetic test data and the output requires clinician review.",
+      instructions: "Rewrite this synthetic specialist dictation as a concise, professional final consultation note. Preserve every clinical fact, uncertainty, negation, number, medication, recommendation, pending item, and ownership statement. Remove filler and speech disfluencies, but do not summarize away details, add medical knowledge, infer a plan, or invent facts. Return only the rewritten note. The output requires clinician review.",
       input: transcript
     })
   });
