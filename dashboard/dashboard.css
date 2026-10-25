@@ -8,19 +8,26 @@
 .page-meta strong { color: var(--ink); font-size: 20px; font-variant-numeric: tabular-nums; }
 
 .consult-database { overflow: hidden; background: #fff; border: 1px solid var(--line-strong); border-radius: 6px; }
-.database-toolbar { min-height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-bottom: 1px solid var(--line); }
+.database-toolbar { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 12px 8px 16px; border-bottom: 1px solid var(--line); }
 .view-name { display: inline-flex; align-items: center; gap: 7px; padding: 6px 9px; background: #f4f1f0; border-radius: 4px; }
 .view-icon { color: var(--muted); font-size: 16px; line-height: 1; }
-.updated-time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.table-tools { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.tool-control { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 650; }
+.tool-control select { min-height: 32px; padding: 5px 28px 5px 8px; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 4px; font: inherit; font-size: 12px; }
+.tool-control select:hover { background: #f7f8f9; }
+.tool-control select:focus-visible, .clear-controls:focus-visible, .label-input:focus-visible { outline: 3px solid rgba(0, 102, 204, .24); outline-offset: 1px; }
+.clear-controls { min-height: 32px; padding: 5px 9px; color: #5f0d0d; background: #fff; border: 1px solid #c9a7a1; border-radius: 4px; font-size: 12px; font-weight: 650; }
+.clear-controls:hover { background: #fbf4f2; }
 .table-scroll { overflow-x: auto; }
-.consult-table { width: 100%; min-width: 1040px; border-collapse: collapse; table-layout: fixed; }
+.consult-table { width: 100%; min-width: 1180px; border-collapse: collapse; table-layout: fixed; }
 .consult-table th { height: 42px; padding: 0 14px; color: var(--muted); background: #fafbfc; border-right: 1px solid #e3e7ea; border-bottom: 1px solid var(--line); text-align: left; font-size: 12px; font-weight: 650; }
-.consult-table th:nth-child(1) { width: 17%; }
-.consult-table th:nth-child(2) { width: 14%; }
-.consult-table th:nth-child(3) { width: 16%; }
-.consult-table th:nth-child(4) { width: 15%; }
+.consult-table th:nth-child(1) { width: 15%; }
+.consult-table th:nth-child(2) { width: 13%; }
+.consult-table th:nth-child(3) { width: 14%; }
+.consult-table th:nth-child(4) { width: 13%; }
 .consult-table th:nth-child(5) { width: 13%; }
-.consult-table th:nth-child(6) { width: 25%; }
+.consult-table th:nth-child(6) { width: 12%; }
+.consult-table th:nth-child(7) { width: 20%; }
 .consult-table td { height: 58px; padding: 9px 14px; border-right: 1px solid #e7eaed; border-bottom: 1px solid #e2e6e9; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .consult-table th:last-child, .consult-table td:last-child { border-right: 0; }
 .consult-table tbody tr { cursor: pointer; transition: background-color 120ms ease-out; }
@@ -31,12 +38,22 @@
 .patient-cell strong { overflow: hidden; text-overflow: ellipsis; }
 .mrn, .submitted { color: var(--muted); font-variant-numeric: tabular-nums; }
 .question-cell { color: #33404b; }
+.label-cell { padding-top: 7px !important; padding-bottom: 7px !important; }
+.label-input { width: 100%; min-height: 32px; padding: 5px 8px; color: #34404b; background: transparent; border: 1px solid transparent; border-radius: 4px; font: inherit; }
+.label-input::placeholder { color: #737f8a; }
+.label-input:hover { background: #f7f8f9; border-color: #d4dade; }
+.label-input:focus { background: #fff; border-color: #7c8a96; }
+.group-row th { height: 34px; padding: 0 14px; color: #35424e; background: #f1f4f6; border-top: 1px solid #c8d0d6; border-bottom: 1px solid #d7dde1; font-size: 11px; font-weight: 700; text-transform: none; }
+.group-row:first-child th { border-top: 0; }
+.group-count { margin-left: 6px; color: var(--muted); font-weight: 500; }
+.empty-row td { height: 140px; color: var(--muted); text-align: center; white-space: normal; }
 .database-footer { min-height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; color: var(--muted); background: #fafbfc; font-size: 11px; }
 
 .status.pending { color: #7b4b00; background: #fff4d6; border-color: #e4c46e; }
-.status.accepted { color: #6f0f0f; background: #f8e9e6; border-color: #d9a49c; }
-.status.paged { color: #0d625a; background: #e6f5f2; border-color: #8bc8be; }
-.status.complete { color: #285d42; background: #eaf5ee; border-color: #9cc5ac; }
+.status.accepted { color: #174f86; background: #eaf3fb; border-color: #9dbddd; }
+.status.paged { color: #17645e; background: #e8f5f3; border-color: #94c8c1; }
+.status.complete { color: #4d5963; background: #eef1f3; border-color: #b9c2c9; }
+.status.rejected { color: #8b2525; background: #fff0f0; border-color: #daa0a0; }
 
 .consult-dialog { width: min(760px, calc(100vw - 64px)); max-height: calc(100dvh - 72px); padding: 0; overflow: hidden; color: var(--ink); background: #fff; border: 1px solid #6f7880; border-radius: 7px; box-shadow: 0 22px 58px rgba(35,31,30,.28), 0 4px 12px rgba(35,31,30,.14); }
 .consult-dialog::backdrop { background: rgba(29,34,38,.38); }
@@ -46,7 +63,7 @@
 .dialog-header h2 { margin: 0; font-size: 19px; }
 .close-button { min-height: 32px; padding: 6px 11px; color: var(--ink); background: #fff; border: 1px solid var(--line-strong); border-radius: 4px; font-weight: 650; }
 .close-button:hover { background: #f3f5f6; }
-.status-summary { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 16px; color: #5f0d0d; background: #fbf4f2; border-bottom: 1px solid #ead0cb; }
+.status-summary { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 16px; color: #33404b; background: #f4f6f8; border-bottom: 1px solid #d7dde1; }
 .status-summary span { font-size: 12px; }
 .status-summary strong { font-size: 13px; }
 
@@ -58,6 +75,13 @@
 .consult-timeline li.done, .consult-timeline li.current { color: var(--ink); }
 .consult-timeline li.done .timeline-dot { background: #8c1515; border-color: #8c1515; }
 .consult-timeline li.current .timeline-dot { background: #fff; border-color: #8c1515; box-shadow: 0 0 0 4px #f3deda; }
+.consult-timeline.is-rejected { grid-template-columns: repeat(2, 1fr); }
+.consult-timeline.is-rejected::before { left: 25%; right: 25%; }
+.consult-timeline.is-rejected::after { left: 25%; width: 50%; background: #a43737; }
+.consult-timeline.is-rejected li:nth-child(n+3) { display: none; }
+.consult-timeline.is-rejected li:first-child .timeline-dot { background: #a43737; border-color: #a43737; }
+.consult-timeline.is-rejected li:nth-child(2) { color: #8b2525; }
+.consult-timeline.is-rejected li:nth-child(2) .timeline-dot { background: #fff0f0; border-color: #a43737; box-shadow: 0 0 0 4px #f8dcdc; }
 
 .detail-panel { min-height: 0; overflow-y: auto; padding: 20px; }
 .patient-heading { display: flex; align-items: start; justify-content: space-between; gap: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
@@ -72,6 +96,8 @@
 @media (max-width: 1100px) {
   .consult-page { width: calc(100% - 32px); padding-top: 28px; }
   .hospital-brand { flex-basis: 190px; width: 190px; }
+  .database-toolbar { align-items: flex-start; flex-direction: column; }
+  .table-tools { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

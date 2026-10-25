@@ -14,6 +14,8 @@ colors:
   blue: "#8c1515"
   blue-hover: "#6f0f0f"
   teal: "#17766d"
+  blue-info: "#174f86"
+  blue-info-soft: "#eaf3fb"
   amber: "#9a6100"
   amber-soft: "#fff4d6"
   red: "#a43737"
@@ -131,13 +133,14 @@ The palette is a quiet clinical blue-and-neutral system in which semantic colors
 
 ### Secondary
 
-- **Coordination Teal** (`teal`): Reserved secondary semantic accent when a coordinated or in-progress state needs distinction.
+- **Information Blue** (`blue-info`, `blue-info-soft`): An accepted consult that is active but not finished.
+- **Coordination Teal** (`teal`): A consultant has paged back and direct coordination is underway.
 
 ### Tertiary
 
 - **Urgency Amber** (`amber`, `amber-soft`): New work, timing-sensitive notices, and warning surfaces that do not indicate failure.
 - **Clinical Red** (`red`, `red-soft`): Urgent markers, destructive or redirect actions, recording state, validation, and browser-support errors.
-- **Completion Green** (`green`): Successful send, acceptance, and completion confirmation.
+- **Completion Green** (`green`): Successful send confirmations outside the consult tracker. Completed consults use neutral gray so they recede without implying that every downstream task is finished.
 
 ### Neutral
 
@@ -239,7 +242,7 @@ Modal preview dialogs use a strong outline, the floating shadow, a dim neutral b
 
 ### Hospitalist Consult Tracker
 
-The dashboard’s signature component is a restrained, Notion-like table showing the consults requested by the hospitalist's team. Each row exposes patient, MRN, specialty, current milestone, submitted time, and the focused consult question. Selecting one row opens a single protected-focus overlay. The overlay separates the current-status sentence from a four-stage milestone timeline: Submitted, Accepted, Paged back, and Completed. It contains only brief consult context and does not expose consultant controls, triage actions, ranking, or unrelated patient workflow.
+The dashboard’s signature component is a restrained, Notion-like table showing the consults requested by the hospitalist's team. Each row exposes patient, MRN, specialty, current milestone, an editable personal label, submitted time, and the focused consult question. A compact toolbar supports status filtering, newest or oldest sorting, and grouping by status, label, or specialty. Selecting one row opens a single protected-focus overlay. The overlay separates the current-status sentence from either the four-stage Submitted, Accepted, Paged back, Completed timeline or a distinct Submitted, Rejected path. It contains only brief consult context and does not expose consultant controls, page submission, manual ranking, drag-and-drop, or unrelated patient workflow.
 
 ### Reviewable Note Generation
 

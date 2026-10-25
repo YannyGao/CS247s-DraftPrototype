@@ -32,7 +32,36 @@
             <span class="view-icon" aria-hidden="true">≡</span>
             <strong>Consult history</strong>
           </div>
-          <span class="updated-time">Updated 15:22</span>
+          <div class="table-tools" aria-label="Consult table controls">
+            <label class="tool-control">
+              <span>Status</span>
+              <select id="status-filter">
+                <option value="all">All statuses</option>
+                <option value="Pending review">Pending review</option>
+                <option value="Accepted">Accepted</option>
+                <option value="Paged back">Paged back</option>
+                <option value="Completed">Completed</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </label>
+            <label class="tool-control">
+              <span>Sort</span>
+              <select id="sort-order">
+                <option value="newest">Newest submitted</option>
+                <option value="oldest">Oldest submitted</option>
+              </select>
+            </label>
+            <label class="tool-control">
+              <span>Group</span>
+              <select id="group-by">
+                <option value="none">No grouping</option>
+                <option value="status">Status</option>
+                <option value="label">My label</option>
+                <option value="specialty">Specialty</option>
+              </select>
+            </label>
+            <button class="clear-controls" id="clear-controls" type="button" hidden>Clear</button>
+          </div>
         </div>
 
         <div class="table-scroll">
@@ -43,6 +72,7 @@
                 <th scope="col">MRN</th>
                 <th scope="col">Specialty</th>
                 <th scope="col">Status</th>
+                <th scope="col">My label</th>
                 <th scope="col">Submitted</th>
                 <th scope="col">Consult question</th>
               </tr>
@@ -52,10 +82,17 @@
         </div>
 
         <footer class="database-footer">
-          <span>8 consults</span>
+          <span id="visible-count">8 consults</span>
           <span>Select a patient to view status details</span>
         </footer>
       </section>
+      <datalist id="label-suggestions">
+        <option value="Follow up"></option>
+        <option value="High priority"></option>
+        <option value="Routine"></option>
+        <option value="Family update"></option>
+        <option value="Discharge planning"></option>
+      </datalist>
     </main>
 
     <dialog class="consult-dialog" id="consult-dialog" aria-labelledby="detail-title">

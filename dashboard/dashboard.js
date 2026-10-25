@@ -1,17 +1,22 @@
 const consults = [
-  { id: "morgan", patient: "Morgan Testpatient", age: 43, pronouns: "they/them", mrn: "SYN-MRN-100001", specialty: "Infectious Diseases", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, submitted: "Today, 14:50", requester: "Dr. Elena Park", question: "Antimicrobial plan for suspected septic arthritis", context: "Fever and acute left-knee pain with purulent aspirate. Orthopedic washout is planned for tonight." },
-  { id: "daniel", patient: "Daniel Example", age: 58, pronouns: "he/him", mrn: "SYN-MRN-100002", specialty: "Medical Oncology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, submitted: "Today, 13:18", requester: "Dr. Priya Nair", question: "Evaluation of suspected recurrent malignancy", context: "Severe hypercalcemia with new pulmonary, adrenal, and osseous lesions. Admission is pending." },
-  { id: "taylor", patient: "Taylor Morgan", age: 67, pronouns: "she/her", mrn: "SYN-MRN-100003", specialty: "Cardiology", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, submitted: "Today, 10:42", requester: "Dr. Noah Shah", question: "Rate-control guidance for new atrial fibrillation", context: "Persistent rapid ventricular response after initial metoprolol; patient remains hemodynamically stable." },
-  { id: "rowan", patient: "Rowan Lee", age: 54, pronouns: "he/him", mrn: "SYN-MRN-100004", specialty: "Nephrology", status: "Completed", statusClass: "complete", currentStatus: "Consult completed", stage: 3, submitted: "Today, 08:36", requester: "Dr. Evelyn Chen", question: "Management of AKI with persistent hyperkalemia", context: "Creatinine rose from 1.1 to 3.4 mg/dL. Potassium remained elevated after temporizing therapy." },
-  { id: "alexis", patient: "Alexis Wright", age: 72, pronouns: "she/her", mrn: "SYN-MRN-100005", specialty: "Pulmonology", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, submitted: "Yesterday, 16:05", requester: "Dr. Lena Ortiz", question: "New oxygen requirement after aspiration event", context: "Now requiring 3 L nasal cannula. Chest radiograph and repeat blood gas are pending." },
-  { id: "casey", patient: "Casey Patel", age: 39, pronouns: "they/them", mrn: "SYN-MRN-100006", specialty: "Gastroenterology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, submitted: "Yesterday, 14:22", requester: "Dr. Martin Gray", question: "Evaluation of acute liver injury", context: "Marked aminotransferase elevation with intact mental status; medication and viral causes are under review." },
-  { id: "riley", patient: "Riley Brooks", age: 81, pronouns: "she/her", mrn: "SYN-MRN-100007", specialty: "Palliative Care", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, submitted: "Yesterday, 11:40", requester: "Dr. Maya Young", question: "Symptom support and goals discussion", context: "Family meeting requested following recurrent admission and progressive functional decline." },
-  { id: "sam", patient: "Sam Demo", age: 70, pronouns: "he/him", mrn: "SYN-MRN-100008", specialty: "Cardiology", status: "Completed", statusClass: "complete", currentStatus: "Consult completed", stage: 3, submitted: "Oct 23, 09:15", requester: "Dr. Jordan Ross", question: "Diuresis plan for acute decompensated heart failure", context: "Volume overload improved after IV diuresis. Final recommendations have been documented." }
+  { id: "morgan", patient: "Morgan Testpatient", age: 43, pronouns: "they/them", mrn: "SYN-MRN-100001", specialty: "Infectious Diseases", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, order: 8, label: "High priority", submitted: "Today, 14:50", requester: "Dr. Elena Park", question: "Antimicrobial plan for suspected septic arthritis", context: "Fever and acute left-knee pain with purulent aspirate. Orthopedic washout is planned for tonight." },
+  { id: "daniel", patient: "Daniel Example", age: 58, pronouns: "he/him", mrn: "SYN-MRN-100002", specialty: "Medical Oncology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, order: 7, label: "Follow up", submitted: "Today, 13:18", requester: "Dr. Priya Nair", question: "Evaluation of suspected recurrent malignancy", context: "Severe hypercalcemia with new pulmonary, adrenal, and osseous lesions. Admission is pending." },
+  { id: "taylor", patient: "Taylor Morgan", age: 67, pronouns: "she/her", mrn: "SYN-MRN-100003", specialty: "Cardiology", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, order: 6, label: "", submitted: "Today, 10:42", requester: "Dr. Noah Shah", question: "Rate-control guidance for new atrial fibrillation", context: "Persistent rapid ventricular response after initial metoprolol; patient remains hemodynamically stable." },
+  { id: "rowan", patient: "Rowan Lee", age: 54, pronouns: "he/him", mrn: "SYN-MRN-100004", specialty: "Nephrology", status: "Completed", statusClass: "complete", currentStatus: "Consult completed", stage: 3, order: 5, label: "Discharge planning", submitted: "Today, 08:36", requester: "Dr. Evelyn Chen", question: "Management of AKI with persistent hyperkalemia", context: "Creatinine rose from 1.1 to 3.4 mg/dL. Potassium remained elevated after temporizing therapy." },
+  { id: "alexis", patient: "Alexis Wright", age: 72, pronouns: "she/her", mrn: "SYN-MRN-100005", specialty: "Pulmonology", status: "Pending review", statusClass: "pending", currentStatus: "Pending review from consultant", stage: 0, order: 4, label: "Routine", submitted: "Yesterday, 16:05", requester: "Dr. Lena Ortiz", question: "New oxygen requirement after aspiration event", context: "Now requiring 3 L nasal cannula. Chest radiograph and repeat blood gas are pending." },
+  { id: "casey", patient: "Casey Patel", age: 39, pronouns: "they/them", mrn: "SYN-MRN-100006", specialty: "Gastroenterology", status: "Accepted", statusClass: "accepted", currentStatus: "Accepted by consultant", stage: 1, order: 3, label: "", submitted: "Yesterday, 14:22", requester: "Dr. Martin Gray", question: "Evaluation of acute liver injury", context: "Marked aminotransferase elevation with intact mental status; medication and viral causes are under review." },
+  { id: "riley", patient: "Riley Brooks", age: 81, pronouns: "she/her", mrn: "SYN-MRN-100007", specialty: "Palliative Care", status: "Paged back", statusClass: "paged", currentStatus: "Consultant paged back", stage: 2, order: 2, label: "Family update", submitted: "Yesterday, 11:40", requester: "Dr. Maya Young", question: "Symptom support and goals discussion", context: "Family meeting requested following recurrent admission and progressive functional decline." },
+  { id: "sam", patient: "Sam Demo", age: 70, pronouns: "he/him", mrn: "SYN-MRN-100008", specialty: "Cardiology", status: "Rejected", statusClass: "rejected", currentStatus: "Rejected by consultant", stage: -1, order: 1, label: "Reroute", submitted: "Oct 23, 09:15", requester: "Dr. Jordan Ross", question: "Diuresis plan for acute decompensated heart failure", context: "Consultant indicated that this request should be routed to a different service." }
 ];
 
 const rows = document.querySelector("#consult-rows");
 const dialog = document.querySelector("#consult-dialog");
 const timeline = document.querySelector("#consult-timeline");
+const statusFilter = document.querySelector("#status-filter");
+const sortOrder = document.querySelector("#sort-order");
+const groupBy = document.querySelector("#group-by");
+const clearControls = document.querySelector("#clear-controls");
+const visibleCount = document.querySelector("#visible-count");
 
 function rowMarkup(consult) {
   return `<tr tabindex="0" data-consult-id="${consult.id}" aria-label="Open ${consult.patient} consult details">
@@ -19,6 +24,7 @@ function rowMarkup(consult) {
     <td class="mrn">${consult.mrn}</td>
     <td>${consult.specialty}</td>
     <td><span class="status ${consult.statusClass}">${consult.status}</span></td>
+    <td class="label-cell"><input class="label-input" data-label-id="${consult.id}" list="label-suggestions" value="${consult.label}" placeholder="Add label" aria-label="Label for ${consult.patient}"></td>
     <td class="submitted">${consult.submitted}</td>
     <td class="question-cell" title="${consult.question}">${consult.question}</td>
   </tr>`;
@@ -26,11 +32,44 @@ function rowMarkup(consult) {
 
 function updateTimeline(stage) {
   const widths = [0, 25, 50, 75];
-  timeline.style.setProperty("--progress", `${widths[stage]}%`);
+  timeline.style.setProperty("--progress", `${stage < 0 ? 0 : widths[stage]}%`);
+  timeline.classList.toggle("is-rejected", stage < 0);
+  timeline.querySelector('[data-step="1"] strong').textContent = stage < 0 ? "Rejected" : "Accepted";
+  timeline.setAttribute("aria-label", stage < 0 ? "Consult rejected" : "Consult progress");
   timeline.querySelectorAll("li").forEach((item, index) => {
-    item.classList.toggle("done", index < stage);
-    item.classList.toggle("current", index === stage);
+    item.classList.toggle("done", stage >= 0 && index < stage);
+    item.classList.toggle("current", stage >= 0 && index === stage);
   });
+}
+
+function groupLabel(consult, key) {
+  if (key === "label") return consult.label || "No label";
+  return consult[key];
+}
+
+function renderRows() {
+  const filtered = consults
+    .filter((consult) => statusFilter.value === "all" || consult.status === statusFilter.value)
+    .sort((a, b) => sortOrder.value === "newest" ? b.order - a.order : a.order - b.order);
+
+  if (!filtered.length) {
+    rows.innerHTML = '<tr class="empty-row"><td colspan="7">No consults match this status.</td></tr>';
+  } else if (groupBy.value === "none") {
+    rows.innerHTML = filtered.map(rowMarkup).join("");
+  } else {
+    const groups = filtered.reduce((result, consult) => {
+      const key = groupLabel(consult, groupBy.value);
+      if (!result.has(key)) result.set(key, []);
+      result.get(key).push(consult);
+      return result;
+    }, new Map());
+    rows.innerHTML = [...groups.entries()].map(([label, items]) =>
+      `<tr class="group-row"><th colspan="7" scope="rowgroup">${label}<span class="group-count">${items.length}</span></th></tr>${items.map(rowMarkup).join("")}`
+    ).join("");
+  }
+
+  visibleCount.textContent = `${filtered.length} ${filtered.length === 1 ? "consult" : "consults"}`;
+  clearControls.hidden = statusFilter.value === "all" && sortOrder.value === "newest" && groupBy.value === "none";
 }
 
 function openConsult(consult) {
@@ -55,11 +94,13 @@ function findConsult(row) {
 }
 
 rows.addEventListener("click", (event) => {
+  if (event.target.matches(".label-input")) return;
   const row = event.target.closest("[data-consult-id]");
   if (row) openConsult(findConsult(row));
 });
 
 rows.addEventListener("keydown", (event) => {
+  if (event.target.matches(".label-input")) return;
   if (!["Enter", " "].includes(event.key)) return;
   const row = event.target.closest("[data-consult-id]");
   if (!row) return;
@@ -71,7 +112,23 @@ dialog.addEventListener("click", (event) => {
   if (event.target === dialog) dialog.close();
 });
 
-rows.innerHTML = consults.map(rowMarkup).join("");
+rows.addEventListener("change", (event) => {
+  const input = event.target.closest("[data-label-id]");
+  if (!input) return;
+  const consult = consults.find((item) => item.id === input.dataset.labelId);
+  consult.label = input.value.trim();
+  if (groupBy.value === "label") renderRows();
+});
+
+[statusFilter, sortOrder, groupBy].forEach((control) => control.addEventListener("change", renderRows));
+clearControls.addEventListener("click", () => {
+  statusFilter.value = "all";
+  sortOrder.value = "newest";
+  groupBy.value = "none";
+  renderRows();
+});
+
+renderRows();
 
 const previewId = new URLSearchParams(window.location.search).get("consult");
 const previewConsult = consults.find((consult) => consult.id === previewId);
