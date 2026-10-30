@@ -62,7 +62,7 @@ Can hospitalists tell what has happened with a consult, what its current status 
 
 ### Core experience
 
-The participant sees one full-screen **My Consults** table modeled after a lightweight database view. Rows show the patient, synthetic MRN, requested specialty, current status, a personal label, submitted time, and focused consult question. The table can be filtered by status, sorted by submitted time, and grouped by status, label, or specialty. Labels are editable inline. Selecting a row opens a detail overlay with either **Submitted → Accepted → Paged back → Completed** or the shorter **Submitted → Rejected** path.
+The participant sees one full-screen **My Consults** table modeled after a lightweight database view. Rows show the patient, synthetic MRN, requested specialty, current status, a personal label, submitted time, and focused consult question. The table can be filtered by status, sorted by submitted time, and grouped by status, label, or specialty. Personal labels are selected from a reusable list. Selecting a row opens a detail overlay with either **Submitted → Accepted → Paged back → Completed** or the shorter **Submitted → Rejected** path.
 
 The overlay also states the current status in plain language, such as **Pending review from consultant** or **Accepted by consultant**. Status colors are deliberately semantic and subdued: pending review is amber, accepted is blue, paged back is teal, completed is neutral gray, and rejected is red. Text labels remain the primary signal. The first test keeps milestone language and current-status language separate so researchers can ask whether hospitalists prefer a backward-looking confirmation or a forward-looking phrase such as **Waiting for page back from consultant**.
 

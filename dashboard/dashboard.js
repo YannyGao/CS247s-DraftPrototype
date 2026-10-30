@@ -18,7 +18,12 @@ const groupBy = document.querySelector("#group-by");
 const clearControls = document.querySelector("#clear-controls");
 const visibleCount = document.querySelector("#visible-count");
 const expandDialogButton = document.querySelector("#expand-dialog");
+const labelChoices = ["", "High priority", "Follow up", "Routine", "Family update", "Discharge planning", "Reroute"];
 let activeConsultIndex = 0;
+
+function labelOptions(selectedLabel) {
+  return labelChoices.map((label) => `<option value="${label}"${label === selectedLabel ? " selected" : ""}>${label || "No label"}</option>`).join("");
+}
 
 function rowMarkup(consult) {
   return `<tr tabindex="0" data-consult-id="${consult.id}" aria-label="Open ${consult.patient} consult details">
@@ -26,7 +31,7 @@ function rowMarkup(consult) {
     <td class="mrn">${consult.mrn}</td>
     <td>${consult.specialty}</td>
     <td><span class="status ${consult.statusClass}">${consult.status}</span></td>
-    <td class="label-cell"><input class="label-input" data-label-id="${consult.id}" list="label-suggestions" value="${consult.label}" placeholder="Add label" aria-label="Label for ${consult.patient}"></td>
+    <td class="label-cell"><select class="label-select" data-label-id="${consult.id}" aria-label="Label for ${consult.patient}">${labelOptions(consult.label)}</select></td>
     <td class="submitted">${consult.submitted}</td>
     <td class="question-cell" title="${consult.question}">${consult.question}</td>
   </tr>`;
@@ -84,6 +89,7 @@ function openConsult(consult) {
   const badge = document.querySelector("#detail-status-badge");
   badge.textContent = consult.status;
   badge.className = `status ${consult.statusClass}`;
+  document.querySelector(".status-summary").className = `status-summary summary-${consult.statusClass}`;
   document.querySelector("#detail-specialty").textContent = consult.specialty;
   document.querySelector("#detail-submitted").textContent = consult.submitted;
   document.querySelector("#detail-requester").textContent = consult.requester;
@@ -103,13 +109,13 @@ function findConsult(row) {
 }
 
 rows.addEventListener("click", (event) => {
-  if (event.target.matches(".label-input")) return;
+  if (event.target.matches(".label-select")) return;
   const row = event.target.closest("[data-consult-id]");
   if (row) openConsult(findConsult(row));
 });
 
 rows.addEventListener("keydown", (event) => {
-  if (event.target.matches(".label-input")) return;
+  if (event.target.matches(".label-select")) return;
   if (!["Enter", " "].includes(event.key)) return;
   const row = event.target.closest("[data-consult-id]");
   if (!row) return;
@@ -127,14 +133,12 @@ expandDialogButton.addEventListener("click", () => {
   const expanded = dialog.classList.toggle("is-expanded");
   expandDialogButton.setAttribute("aria-pressed", String(expanded));
   expandDialogButton.setAttribute("aria-label", expanded ? "Restore consult details" : "Expand consult details");
-  expandDialogButton.textContent = expanded ? "⤡" : "⤢";
 });
 dialog.addEventListener("close", () => {
   rows.querySelectorAll(".is-open").forEach((row) => row.classList.remove("is-open"));
   dialog.classList.remove("is-expanded");
   expandDialogButton.setAttribute("aria-pressed", "false");
   expandDialogButton.setAttribute("aria-label", "Expand consult details");
-  expandDialogButton.textContent = "⤢";
 });
 
 dialog.addEventListener("keydown", (event) => {

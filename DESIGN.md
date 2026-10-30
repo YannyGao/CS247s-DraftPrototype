@@ -242,7 +242,7 @@ Modal preview dialogs use a strong outline, the floating shadow, a dim neutral b
 
 ### Hospitalist Consult Tracker
 
-The dashboard’s signature component is a restrained, Notion-like table showing the consults requested by the hospitalist's team. Each row exposes patient, MRN, specialty, current milestone, an editable personal label, submitted time, and the focused consult question. A compact toolbar supports status filtering, newest or oldest sorting, and grouping by status, label, or specialty. Selecting one row opens a single protected-focus overlay. The overlay separates the current-status sentence from either the four-stage Submitted, Accepted, Paged back, Completed timeline or a distinct Submitted, Rejected path. It contains only brief consult context and does not expose consultant controls, page submission, manual ranking, drag-and-drop, or unrelated patient workflow.
+The dashboard’s signature component is a restrained, Notion-like table showing the consults requested by the hospitalist's team. Each row exposes patient, MRN, specialty, current milestone, a selectable personal label, submitted time, and the focused consult question. A compact toolbar supports status filtering, newest or oldest sorting, and grouping by status, label, or specialty. Selecting one row opens a single protected-focus overlay. The overlay separates the current-status sentence from either the four-stage Submitted, Accepted, Paged back, Completed timeline or a distinct Submitted, Rejected path. It contains only brief consult context and does not expose consultant controls, page submission, manual ranking, drag-and-drop, or unrelated patient workflow.
 
 ### Reviewable Note Generation
 

@@ -86,57 +86,67 @@
           <span>Select a patient to view status details</span>
         </footer>
       </section>
-      <datalist id="label-suggestions">
-        <option value="Follow up"></option>
-        <option value="High priority"></option>
-        <option value="Routine"></option>
-        <option value="Family update"></option>
-        <option value="Discharge planning"></option>
-      </datalist>
     </main>
 
     <dialog class="consult-dialog" id="consult-dialog" aria-labelledby="detail-title">
       <form method="dialog" class="dialog-frame">
         <header class="dialog-toolbar" aria-label="Consult detail controls">
           <div class="dialog-navigation">
-            <button type="button" class="dialog-icon-button" id="expand-dialog" aria-label="Expand consult details" aria-pressed="false">⤢</button>
+            <button type="button" class="dialog-icon-button" id="expand-dialog" aria-label="Expand consult details" aria-pressed="false">
+              <svg class="expand-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 8V4h4M12 4h4v4M16 12v4h-4M8 16H4v-4"/></svg>
+              <svg class="restore-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4v4H4M12 16v-4h4M4 8l5-5M16 12l-5 5"/></svg>
+            </button>
             <span class="toolbar-divider" aria-hidden="true"></span>
-            <button type="button" class="dialog-icon-button" id="previous-consult" aria-label="View previous consult">←</button>
-            <button type="button" class="dialog-icon-button" id="next-consult" aria-label="View next consult">→</button>
+            <button type="button" class="dialog-icon-button" id="previous-consult" aria-label="View previous consult"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 4.5-5.5 5.5 5.5 5.5"/></svg></button>
+            <button type="button" class="dialog-icon-button" id="next-consult" aria-label="View next consult"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5.5 5.5-5.5 5.5"/></svg></button>
           </div>
-          <button class="dialog-icon-button close-icon-button" value="cancel" aria-label="Close consult details">×</button>
+          <button class="dialog-icon-button close-icon-button" value="cancel" aria-label="Close consult details"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button>
         </header>
 
-        <section class="dialog-titlebar">
-          <div>
-            <span class="dialog-label">Consult status</span>
+        <section class="patient-context-header">
+          <div class="patient-context-copy">
+            <span class="dialog-label">Consult request</span>
             <h2 id="detail-title">Patient consult</h2>
+            <p id="detail-identity">43 years · they/them · SYN-MRN-100001</p>
           </div>
-          <div class="status-summary" aria-live="polite">
-            <span>Currently</span>
-            <strong id="current-status">Pending review from consultant</strong>
+          <div class="header-status">
+            <span class="status pending" id="detail-status-badge">Pending review</span>
+            <span class="submitted-summary">Submitted <strong id="detail-submitted">Today, 14:50</strong></span>
           </div>
         </section>
 
-        <ol class="consult-timeline" id="consult-timeline" aria-label="Consult progress">
-          <li data-step="0"><span class="timeline-dot"></span><strong>Submitted</strong></li>
-          <li data-step="1"><span class="timeline-dot"></span><strong>Accepted</strong></li>
-          <li data-step="2"><span class="timeline-dot"></span><strong>Paged back</strong></li>
-          <li data-step="3"><span class="timeline-dot"></span><strong>Completed</strong></li>
-        </ol>
+        <section class="status-workflow" aria-labelledby="workflow-heading">
+          <div class="status-summary" aria-live="polite">
+            <span id="workflow-heading">Current status</span>
+            <strong id="current-status">Pending review from consultant</strong>
+          </div>
+          <ol class="consult-timeline" id="consult-timeline" aria-label="Consult progress">
+            <li data-step="0"><span class="timeline-dot"></span><strong>Submitted</strong></li>
+            <li data-step="1"><span class="timeline-dot"></span><strong>Accepted</strong></li>
+            <li data-step="2"><span class="timeline-dot"></span><strong>Paged back</strong></li>
+            <li data-step="3"><span class="timeline-dot"></span><strong>Completed</strong></li>
+          </ol>
+        </section>
 
         <section class="detail-panel">
-          <div class="patient-heading">
-            <div><h3 id="detail-patient">Morgan Testpatient</h3><p id="detail-identity">43 years · they/them · SYN-MRN-100001</p></div>
-            <span class="status pending" id="detail-status-badge">Pending review</span>
+          <div class="detail-layout">
+            <section class="request-metadata" aria-labelledby="request-details-heading">
+              <h3 id="request-details-heading">Request details</h3>
+              <dl>
+                <div><dt>Specialty</dt><dd id="detail-specialty">Infectious Diseases</dd></div>
+                <div><dt>Requested by</dt><dd id="detail-requester">Dr. Elena Park</dd></div>
+                <div><dt>Patient</dt><dd id="detail-patient">Morgan Testpatient</dd></div>
+              </dl>
+            </section>
+            <section class="consult-question" aria-labelledby="consult-question-heading">
+              <h3 id="consult-question-heading">Question for consultant</h3>
+              <p id="detail-question"></p>
+            </section>
           </div>
-          <dl class="detail-grid">
-            <div><dt>Specialty requested</dt><dd id="detail-specialty">Infectious Diseases</dd></div>
-            <div><dt>Submitted</dt><dd id="detail-submitted">Today, 14:50</dd></div>
-            <div><dt>Requesting clinician</dt><dd id="detail-requester">Dr. Elena Park</dd></div>
-            <div class="wide"><dt>Consult question</dt><dd id="detail-question"></dd></div>
-            <div class="wide"><dt>Brief context</dt><dd id="detail-context"></dd></div>
-          </dl>
+          <section class="clinical-context" aria-labelledby="clinical-context-heading">
+            <h3 id="clinical-context-heading">Clinical context</h3>
+            <p id="detail-context"></p>
+          </section>
         </section>
       </form>
     </dialog>
